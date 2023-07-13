@@ -1,13 +1,85 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Zilla Slab Highlight', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.board-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 100%;
+}
+
+.blue-board {
+  background-color: #185075;
+}
+
+.dark-green-board {
+  background-color: #004d00;
+}
+
+.byteburst-text {
+  font-family: 'Bungee', cursive;
+  color: #7a0b0b;
+  font-size: 40px;
+}
+
+.button.dark-blue-button {
+  background-color: #ffffff;
+  font-size: 70%;
+}
+
+.button:not(:last-child) {
+  margin-right: 10px;
+}
+
+.logo-container {
+  background-color: #ffffff;
+  width: 12%;
+}
+
+.logo-image {
+  width: 100%;
+  height: auto;
+}
+
+.white-board {
+  background-color: white;
+}
+
+/* Additional CSS for positioning */
+.App {
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: white;
+  padding: 10px;
+}
+
+.logo-container {
+  width: 12%;
+  margin-right: 20px;
+}
+
+.logo-image {
+  width: 100%;
+  height: auto;
+}
+
+.byteburst-container {
+  margin-top: 10px;
 }
