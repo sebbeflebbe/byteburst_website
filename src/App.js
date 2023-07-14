@@ -147,12 +147,12 @@ function App() {
           </Box>
         </Box>
       </Box>
-      <Box className="footer" pos="fixed" bottom="0" left="0" right="0" p="4" bg="gray.800" color="white">
+      <Box className="footer" pos="fixed" bottom="0" left="0" right="0" p="4" bg="#7a0606" color="white">
         <ButtonGroup>
-          <Button leftIcon={<FaLinkedin />} variant="ghost" color="whiteAlpha.900" />
-          <Button leftIcon={<FaPhone />} variant="ghost" color="whiteAlpha.900" />
-          <Button leftIcon={<FaEnvelope />} variant="ghost" color="whiteAlpha.900" />
-          <Button leftIcon={<FiGithub />} variant="ghost" color="whiteAlpha.900" />
+          <Button leftIcon={<FaLinkedin />} variant="ghost" color="#d39b22" />
+          <Button leftIcon={<FaPhone />} variant="ghost" color="#d39b22" />
+          <Button leftIcon={<FaEnvelope />} variant="ghost" color="#d39b22" />
+          <Button leftIcon={<FiGithub />} variant="ghost" color="#d39b22" />
         </ButtonGroup>
       </Box>
     </Box>
