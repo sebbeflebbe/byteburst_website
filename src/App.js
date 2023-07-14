@@ -1,13 +1,25 @@
-import { Box, Button, Menu, MenuButton, MenuList, MenuItem, Image } from "@chakra-ui/react";
+import { Box, Button, ButtonGroup, Menu, MenuButton, MenuList, MenuItem, Image, extendTheme, ChakraProvider } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import logo from './byteburstlogo.jpg';
+
+// Customizing the default theme
+const theme = extendTheme({
+  components: {
+    Button: {
+      variants: {
+        outline: {
+          border: "2px dashed",
+          borderRadius: 0,
+          fontWeight: "semibold",
+        },
+      },
+    },
+  },
+});
 
 function App() {
   return (
     <Box className="App">
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet" />
-      </head>
       <Box className="header">
         <Box className="logo-container">
           <Image src={logo} alt="Logo" className="logo-image" />
@@ -25,8 +37,8 @@ function App() {
               <MenuButton
                 as={Button}
                 rightIcon={<ChevronDownIcon />}
-                variant="outline"
-                colorScheme="blue"
+                variant="ghost"
+                color="whiteAlpha.900" // Update colorScheme to "whiteAlpha"
                 _hover={{ bgColor: "blue.100" }}
                 _expanded={{ bgColor: "blue.200" }}
                 _focus={{ boxShadow: "outline" }}
@@ -51,8 +63,8 @@ function App() {
               <MenuButton
                 as={Button}
                 rightIcon={<ChevronDownIcon />}
-                variant="outline"
-                colorScheme="blue"
+                variant="ghost"
+                color="whiteAlpha.900" // Update colorScheme to "whiteAlpha"
                 _hover={{ bgColor: "blue.100" }}
                 _expanded={{ bgColor: "blue.200" }}
                 _focus={{ boxShadow: "outline" }}
@@ -77,8 +89,8 @@ function App() {
               <MenuButton
                 as={Button}
                 rightIcon={<ChevronDownIcon />}
-                variant="outline"
-                colorScheme="blue"
+                variant="ghost"
+                color="whiteAlpha.900" // Update colorScheme to "whiteAlpha"
                 _hover={{ bgColor: "blue.100" }}
                 _expanded={{ bgColor: "blue.200" }}
                 _focus={{ boxShadow: "outline" }}
@@ -103,8 +115,8 @@ function App() {
               <MenuButton
                 as={Button}
                 rightIcon={<ChevronDownIcon />}
-                variant="outline"
-                colorScheme="blue"
+                variant="ghost"
+                color="whiteAlpha.900" // Update colorScheme to "whiteAlpha"
                 _hover={{ bgColor: "blue.100" }}
                 _expanded={{ bgColor: "blue.200" }}
                 _focus={{ boxShadow: "outline" }}
@@ -128,13 +140,19 @@ function App() {
           </Box>
         </Box>
         <Box className="board dark-green-board">
-          <p className="green-board-text">
+          <Box className="green-board-text">
             Fueling tech excellence, one code at a time
-          </p>
+          </Box>
         </Box>
       </Box>
     </Box>
   );
 }
 
-export default App;
+export default function ThemedApp() {
+  return (
+    <ChakraProvider theme={theme}>
+      <App />
+    </ChakraProvider>
+  );
+}
