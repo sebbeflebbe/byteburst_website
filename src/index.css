@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+
 body {
   margin: 0;
   font-family: 'Zilla Slab Highlight', cursive;
@@ -81,5 +83,86 @@ body {
 }
 
 .byteburst-container {
+  margin-top: 10px;
+}
+
+/* Additional Chakra UI Styling */
+.box {
+  box-sizing: border-box;
+}
+
+.flex {
+  display: flex;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.height-60 {
+  height: 60px;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.p-10 {
+  padding: 10px;
+}
+
+.fontSize-4xl {
+  font-size: 2rem;
+}
+
+.fontWeight-bold {
+  font-weight: bold;
+}
+
+.color-red {
+  color: #7a0b0b;
+}
+
+.bg-blue {
+  background-color: #185075;
+}
+
+.bg-dark-green {
+  background-color: #004d00;
+}
+
+.bg-light-blue {
+  background-color: #ffffff;
+}
+
+.text-dark-blue {
+  color: #00008b;
+}
+
+.fontSize-sm {
+  font-size: 0.875rem;
+}
+
+.marginRight-10 {
+  margin-right: 10px;
+}
+
+.width-12 {
+  width: 12%;
+}
+
+.marginRight-20 {
+  margin-right: 20px;
+}
+
+.marginTop-10 {
   margin-top: 10px;
 }
