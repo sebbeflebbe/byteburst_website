@@ -30,7 +30,7 @@ function App() {
                 _hover={{ bgColor: "blue.100" }}
                 _expanded={{ bgColor: "blue.200" }}
                 _focus={{ boxShadow: "outline" }}
-                mr={12} // Add margin-right for spacing
+                mr={6} // Increase the spacing to 6
               >
                 Vision
               </MenuButton>
@@ -56,7 +56,7 @@ function App() {
                 _hover={{ bgColor: "blue.100" }}
                 _expanded={{ bgColor: "blue.200" }}
                 _focus={{ boxShadow: "outline" }}
-                mr={12} // Add margin-right for spacing
+                mr={6} // Increase the spacing to 6
               >
                 Our Projects
               </MenuButton>
@@ -82,7 +82,7 @@ function App() {
                 _hover={{ bgColor: "blue.100" }}
                 _expanded={{ bgColor: "blue.200" }}
                 _focus={{ boxShadow: "outline" }}
-                mr={12} // Add margin-right for spacing
+                mr={6} // Increase the spacing to 6
               >
                 Our Consultants
               </MenuButton>
@@ -108,7 +108,7 @@ function App() {
                 _hover={{ bgColor: "blue.100" }}
                 _expanded={{ bgColor: "blue.200" }}
                 _focus={{ boxShadow: "outline" }}
-                mr={12} // Add margin-right for spacing
+                mr={6} // Increase the spacing to 6
               >
                 Contact
               </MenuButton>
@@ -127,7 +127,11 @@ function App() {
             </Menu>
           </Box>
         </Box>
-        <Box className="board dark-green-board"></Box>
+        <Box className="board dark-green-board">
+          <p className="green-board-text">
+            Fueling tech excellence, one code at a time
+          </p>
+        </Box>
       </Box>
     </Box>
   );
