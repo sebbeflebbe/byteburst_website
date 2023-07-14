@@ -1,5 +1,7 @@
 import { Box, Button, ButtonGroup, Menu, MenuButton, MenuList, MenuItem, Image, extendTheme, ChakraProvider } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import { FaLinkedin, FaPhone, FaEnvelope } from "react-icons/fa";
+import { FiGithub } from "react-icons/fi";
 import logo from './byteburstlogo.jpg';
 
 // Customizing the default theme
@@ -144,6 +146,14 @@ function App() {
             Fueling tech excellence, one code at a time
           </Box>
         </Box>
+      </Box>
+      <Box className="footer" pos="fixed" bottom="0" left="0" right="0" p="4" bg="gray.800" color="white">
+        <ButtonGroup>
+          <Button leftIcon={<FaLinkedin />} variant="ghost" color="whiteAlpha.900" />
+          <Button leftIcon={<FaPhone />} variant="ghost" color="whiteAlpha.900" />
+          <Button leftIcon={<FaEnvelope />} variant="ghost" color="whiteAlpha.900" />
+          <Button leftIcon={<FiGithub />} variant="ghost" color="whiteAlpha.900" />
+        </ButtonGroup>
       </Box>
     </Box>
   );
