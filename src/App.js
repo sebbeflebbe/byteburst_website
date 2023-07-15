@@ -70,10 +70,12 @@ function App() {
                 rightIcon={<ChevronDownIcon />}
                 variant="ghost"
                 color="#7a060b"
-                _hover={{ bgColor: "blue.100" }}
+                _hover={{ bgColor: "red.100" }}
                 _expanded={{ bgColor: "blue.200" }}
                 _focus={{ boxShadow: "outline" }}
-                mr={6}
+                borderColor="black" // Change border color to yellow
+                borderWidth="0.5px" // Set border width
+                mr={5}
               >
                 Our Projects
               </MenuButton>
@@ -84,10 +86,8 @@ function App() {
                 boxShadow="md"
                 borderRadius="md"
               >
-                <MenuItem _hover={{ bg: "blue.50" }}>Option 1</MenuItem>
-                <MenuItem _hover={{ bg: "blue.50" }}>Option 2</MenuItem>
-                <MenuItem _hover={{ bg: "blue.50" }}>Option 3</MenuItem>
-                <MenuItem _hover={{ bg: "blue.50" }}>Option 4</MenuItem>
+                <MenuItem _hover={{ bg: "blue.50" }}>OpenScan</MenuItem>
+                <MenuItem _hover={{ bg: "blue.50" }}>Halloween Game</MenuItem>
               </MenuList>
             </Menu>
             {/* Our Consultants Menu */}
@@ -97,10 +97,12 @@ function App() {
                 rightIcon={<ChevronDownIcon />}
                 variant="ghost"
                 color="#7a060b"
-                _hover={{ bgColor: "blue.100" }}
+                _hover={{ bgColor: "red.100" }}
                 _expanded={{ bgColor: "blue.200" }}
                 _focus={{ boxShadow: "outline" }}
-                mr={6}
+                borderColor="black" // Change border color to yellow
+                borderWidth="0.5px" // Set border width
+                mr={0}
               >
                 Our Consultants
               </MenuButton>
