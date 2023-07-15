@@ -63,32 +63,7 @@ function App() {
       <Box className="board-container">
         <Box className="board blue-board">
           <Box className="menu-container">
-            <Menu>
-              <MenuButton
-                as={Button}
-                rightIcon={<ChevronDownIcon />}
-                variant="ghost"
-                color="#7a060b"
-                _hover={{ bgColor: "blue.100" }}
-                _expanded={{ bgColor: "blue.200" }}
-                _focus={{ boxShadow: "outline" }}
-                mr={6}
-              >
-                Vision
-              </MenuButton>
-              <MenuList
-                bg="white"
-                color="blue.500"
-                minWidth="150px"
-                boxShadow="md"
-                borderRadius="md"
-              >
-                <MenuItem _hover={{ bg: "blue.50" }}>Option 1</MenuItem>
-                <MenuItem _hover={{ bg: "blue.50" }}>Option 2</MenuItem>
-                <MenuItem _hover={{ bg: "blue.50" }}>Option 3</MenuItem>
-                <MenuItem _hover={{ bg: "blue.50" }}>Option 4</MenuItem>
-              </MenuList>
-            </Menu>
+            {/* Our Projects Menu */}
             <Menu>
               <MenuButton
                 as={Button}
@@ -115,6 +90,7 @@ function App() {
                 <MenuItem _hover={{ bg: "blue.50" }}>Option 4</MenuItem>
               </MenuList>
             </Menu>
+            {/* Our Consultants Menu */}
             <Menu>
               <MenuButton
                 as={Button}
@@ -127,32 +103,6 @@ function App() {
                 mr={6}
               >
                 Our Consultants
-              </MenuButton>
-              <MenuList
-                bg="white"
-                color="blue.500"
-                minWidth="150px"
-                boxShadow="md"
-                borderRadius="md"
-              >
-                <MenuItem _hover={{ bg: "blue.50" }}>Option 1</MenuItem>
-                <MenuItem _hover={{ bg: "blue.50" }}>Option 2</MenuItem>
-                <MenuItem _hover={{ bg: "blue.50" }}>Option 3</MenuItem>
-                <MenuItem _hover={{ bg: "blue.50" }}>Option 4</MenuItem>
-              </MenuList>
-            </Menu>
-            <Menu>
-              <MenuButton
-                as={Button}
-                rightIcon={<ChevronDownIcon />}
-                variant="ghost"
-                color="#7a060b"
-                _hover={{ bgColor: "blue.100" }}
-                _expanded={{ bgColor: "blue.200" }}
-                _focus={{ boxShadow: "outline" }}
-                mr={6}
-              >
-                Contact
               </MenuButton>
               <MenuList
                 bg="white"
