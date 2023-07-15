@@ -174,8 +174,10 @@ body {
 
 .green-board-text {
   font-family: 'Bebas Neue', cursive;
-  color: white;
-  font-size: 21px;
+  color: #d39b22;
+  font-size: 26px;
   text-align: center;
   padding: 10px;
 }
+
+
