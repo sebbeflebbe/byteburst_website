@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import React from 'react';
-import Lottie from 'react-lottie';
 import 'animate.css';
 import {
   Box,
@@ -230,18 +229,6 @@ function App() {
           <Button onClick={handleCloseCard}>Close</Button>
         </Card>
       )}
-      {/* Lottie Animation */}
-      <div className="animation-container" style={{ position: 'fixed', top: '10px', right: '-180px' }}>
-  <Lottie
-    options={{
-      animationData: scribbleAnimation,
-      loop: true,
-      autoplay: true,
-    }}
-    width={600}
-    height={130}
-  />
-</div>
     </Box>
   );
 }
