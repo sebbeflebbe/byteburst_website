@@ -38,6 +38,16 @@ const theme = extendTheme({
   },
 });
 
+// Create a custom wrapper component with animation
+function AnimatedText({ text, animation }) {
+  return (
+    <Box
+      className={`animate__animated ${animation}`} // Apply the animation class to the element
+    >
+      {text}
+    </Box>
+  );
+}
 
 function App() {
   const [showCard, setShowCard] = useState(false);
@@ -53,19 +63,13 @@ function App() {
   // The complete text to be split into two columns
   const completeText = `Founded in the summer of 2023 by Sebastian Andersson, a recently graduated junior developer with a passion for technology and problem-solving, ByteBurst is a forward-thinking software development company committed to delivering exceptional results for our clients. We pride ourselves on being a young and vibrant team that embraces challenges, constantly seeks growth opportunities, and values customer satisfaction above all else.
 
-  Our Mission: Flexibility, Cost Effectiveness, and Knowledge Expansion
-
   At ByteBurst, our mission is simple yet powerful - to provide our customers with unparalleled flexibility and cost-effectiveness in their software development projects. We understand that every business is unique and has its own specific requirements. That's why we tailor our solutions to meet your individual needs, ensuring that you receive the best value for your investment.
 
   As a company founded by a junior developer, we know the importance of continuous learning and growth. We are eager to take on a wide range of projects across various industries, as each new challenge presents an opportunity for us to gather knowledge and expand our expertise. By embracing diverse projects, we strengthen our problem-solving skills and gain valuable insights that enable us to offer innovative solutions to our clients.
 
-  Our Services: Expertise and Support at Your Fingertips
-
   Whether you are a startup with limited technical resources or an established enterprise seeking to enhance your software capabilities, we are here to help. At ByteBurst, we are well-equipped to handle a myriad of development-related questions, and our team of highly skilled developers is always ready to assist you. You can easily reach out to us, and we encourage you to explore our consultant profiles to find the perfect fit for your project.
 
   We understand that software development can be a daunting process, especially for those unfamiliar with the technical jargon. Rest assured, with ByteBurst, you won't need to worry about the complexities of the development journey. We believe in clear and transparent communication, ensuring that you stay informed every step of the way.
-
-  Our Core Values: Willingness to Learn, Patience, and Joy
 
   For us, software development is not merely a profession; it is a journey of growth and discovery. We hold steadfast to our core values of willingness to learn, patience, and finding joy in what we do. It is this passion that drives us to deliver exceptional results and create valuable experiences for our clients.
 
@@ -74,8 +78,6 @@ function App() {
   We also understand that great things take time and effort. Patience is a virtue we cherish, as it allows us to approach each project with meticulous attention to detail and deliver polished, high-quality outcomes.
 
   Finally, joy is at the heart of everything we do. We believe that enjoying the journey is just as important as reaching the destination. Our enthusiasm and positive approach bring an element of excitement to every project we undertake.
-
-  Join Us on Your Journey to Success
 
   Whether you are an aspiring startup or an established enterprise seeking to revamp your software solutions, ByteBurst is here to accompany you on your journey to success. Our dedication to flexibility, cost-effectiveness, knowledge expansion, and our core values ensure that you receive nothing short of excellence.
 
@@ -208,10 +210,11 @@ function App() {
         bg="white"
         p={2}
         mt={6}
+        mx={12}
+        mb={60}
         display="flex"
         flexDirection="column"
         alignItems="center"
-        mb={32}
       >
         <Heading as="h2" size="2xl" mb={8}>
           Our Vision
@@ -222,16 +225,50 @@ function App() {
           justifyContent="center"
           alignItems="flex-start"
           columnGap={20}
-          mx={20}
         >
           <Box flex="1">
+            <Box fontSize="25px" fontWeight="bold" textAlign="center" mb={4}>
+              {/* Use the custom AnimatedText component with the desired animation */}
+              <AnimatedText text="Our Mission: Flexibility, Cost Effectiveness, and Knowledge Expansion" animation="animate__lightSpeedInRight" />
+            </Box>
             <Box fontSize="16px" textAlign="justify" className="animate__animated animate__bounceInUp">
-              {leftColumnText}
+              {/* Separate Box component for the first section */}
+              <Box mb={4}>
+                {leftColumnText}
+              </Box>
+            </Box>
+          </Box>
+          <Box flex="1" marginBottom="4"> {/* Add marginBottom */}
+            <Box fontSize="25px" fontWeight="bold" textAlign="center" mb={4}>
+              {/* Use the custom AnimatedText component with the desired animation */}
+              <AnimatedText text="Our Services: Expertise and Support at Your Fingertips" animation="animate__lightSpeedInRight" />
+            </Box>
+            <Box fontSize="16px" textAlign="justify" className="animate__animated animate__bounceInUp">
+              {/* Separate Box component for the second section */}
+              <Box mb={4}>
+                {rightColumnText}
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+        <Box
+          display="flex"
+          flexDirection="row"
+          justifyContent="center"
+          alignItems="flex-start"
+          columnGap={20}
+          mt={4}
+        >
+          <Box flex="1" marginBottom="4"> {/* Add marginBottom */}
+            <Box fontSize="25px" fontWeight="bold" textAlign="center" mb={4}>
+              {/* Use the custom AnimatedText component with the desired animation */}
+              <AnimatedText text="Our Core Values: Willingness to Learn, Patience, and Joy" animation="animate__lightSpeedInRight" />
             </Box>
           </Box>
           <Box flex="1">
-            <Box fontSize="16px" textAlign="justify" className="animate__animated animate__bounceInUp">
-              {rightColumnText}
+            <Box fontSize="25px" fontWeight="bold" textAlign="center" mb={4}>
+              {/* Use the custom AnimatedText component with the desired animation */}
+              <AnimatedText text="Join Us on Your Journey to Success" animation="animate__lightSpeedInRight" />
             </Box>
           </Box>
         </Box>
