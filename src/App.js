@@ -211,6 +211,7 @@ function App() {
         display="flex"
         flexDirection="column"
         alignItems="center"
+        mb={32}
       >
         <Heading as="h2" size="2xl" mb={8}>
           Our Vision
