@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import React from 'react';
 import 'animate.css';
 import {
@@ -20,7 +20,7 @@ import {
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { FaLinkedin, FaPhone, FaEnvelope } from "react-icons/fa";
 import { FiGithub } from "react-icons/fi";
-import logo from './byteburstlogo.jpg';
+import logo from './byteburstlogo.remade.png';
 import scribbleAnimation from "./scribble-animation.json";
 
 // Customizing the default theme
@@ -49,8 +49,38 @@ function AnimatedText({ text, animation }) {
   );
 }
 
+function findNearestSentenceEnd(text, index) {
+  // Regular expression to match sentence ends (. ! ?) followed by a space or the end of the text
+  const regex = /(\.|\!|\?)(\s|$)/g;
+  let match;
+  let lastMatchIndex = -1;
+
+  // Find the last sentence end before the index
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > index) {
+      break;
+    }
+    lastMatchIndex = match.index;
+  }
+
+  // Return the nearest sentence end before the index
+  return lastMatchIndex >= 0 ? lastMatchIndex + match[1].length : index;
+}
+
 function App() {
   const [showCard, setShowCard] = useState(false);
+  const [scrollBackground, setScrollBackground] = useState(false);
+
+  const handleScroll = () => {
+    setScrollBackground(window.scrollY > 0);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const handlePhoneIconClick = () => {
     setShowCard(true);
@@ -61,32 +91,36 @@ function App() {
   };
 
   // The complete text to be split into two columns
-  const completeText = `Founded in the summer of 2023 by Sebastian Andersson, a recently graduated junior developer with a passion for technology and problem-solving, ByteBurst is a forward-thinking software development company committed to delivering exceptional results for our clients. We pride ourselves on being a young and vibrant team that embraces challenges, constantly seeks growth opportunities, and values customer satisfaction above all else.
+  // ...
 
-  At ByteBurst, our mission is simple yet powerful - to provide our customers with unparalleled flexibility and cost-effectiveness in their software development projects. We understand that every business is unique and has its own specific requirements. That's why we tailor our solutions to meet your individual needs, ensuring that you receive the best value for your investment.
+const completeText = `
+Founded in the summer of 2023 by Sebastian Andersson, a recently graduated junior developer with a passion for technology and problem-solving, ByteBurst is a forward-thinking software development company committed to delivering exceptional results for our clients. We pride ourselves on being a young and vibrant team that embraces challenges, constantly seeks growth opportunities, and values customer satisfaction above all else.
 
-  As a company founded by a junior developer, we know the importance of continuous learning and growth. We are eager to take on a wide range of projects across various industries, as each new challenge presents an opportunity for us to gather knowledge and expand our expertise. By embracing diverse projects, we strengthen our problem-solving skills and gain valuable insights that enable us to offer innovative solutions to our clients.
+At ByteBurst, our mission is simple yet powerful - to provide our customers with unparalleled flexibility and cost-effectiveness in their software development projects. We understand that every business is unique and has its own specific requirements. That's why we tailor our solutions to meet your individual needs, ensuring that you receive the best value for your investment.
 
-  Whether you are a startup with limited technical resources or an established enterprise seeking to enhance your software capabilities, we are here to help. At ByteBurst, we are well-equipped to handle a myriad of development-related questions, and our team of highly skilled developers is always ready to assist you. You can easily reach out to us, and we encourage you to explore our consultant profiles to find the perfect fit for your project.
+As a company founded by a junior developer, we know the importance of continuous learning and growth. We are eager to take on a wide range of projects across various industries, as each new challenge presents an opportunity for us to gather knowledge and expand our expertise. By embracing diverse projects, we strengthen our problem-solving skills and gain valuable insights that enable us to offer innovative solutions to our clients.
 
-  We understand that software development can be a daunting process, especially for those unfamiliar with the technical jargon. Rest assured, with ByteBurst, you won't need to worry about the complexities of the development journey. We believe in clear and transparent communication, ensuring that you stay informed every step of the way.
+Whether you are a startup with limited technical resources or an established enterprise seeking to enhance your software capabilities, we are here to help. At ByteBurst, we are well-equipped to handle a myriad of development-related questions, and our team of highly skilled developers is always ready to assist you. You can easily reach out to us, and we encourage you to explore our consultant profiles to find the perfect fit for your project.
 
-  For us, software development is not merely a profession; it is a journey of growth and discovery. We hold steadfast to our core values of willingness to learn, patience, and finding joy in what we do. It is this passion that drives us to deliver exceptional results and create valuable experiences for our clients.
+We understand that software development can be a daunting process, especially for those unfamiliar with the technical jargon. Rest assured, with ByteBurst, you won't need to worry about the complexities of the development journey. We believe in clear and transparent communication, ensuring that you stay informed every step of the way.
 
-  Our team is continuously honing their skills and staying up-to-date with the latest industry trends and technological advancements. We believe that by constantly learning, we can stay at the forefront of innovation and deliver cutting-edge solutions.
+For us, software development is not merely a profession; it is a journey of growth and discovery. We hold steadfast to our core values of willingness to learn, patience, and finding joy in what we do. It is this passion that drives us to deliver exceptional results and create valuable experiences for our clients.
 
-  We also understand that great things take time and effort. Patience is a virtue we cherish, as it allows us to approach each project with meticulous attention to detail and deliver polished, high-quality outcomes.
+Our team is continuously honing their skills and staying up-to-date with the latest industry trends and technological advancements. We believe that by constantly learning, we can stay at the forefront of innovation and deliver cutting-edge solutions.
 
-  Finally, joy is at the heart of everything we do. We believe that enjoying the journey is just as important as reaching the destination. Our enthusiasm and positive approach bring an element of excitement to every project we undertake.
+We also understand that great things take time and effort. Patience is a virtue we cherish, as it allows us to approach each project with meticulous attention to detail and deliver polished, high-quality outcomes.
 
-  Whether you are an aspiring startup or an established enterprise seeking to revamp your software solutions, ByteBurst is here to accompany you on your journey to success. Our dedication to flexibility, cost-effectiveness, knowledge expansion, and our core values ensure that you receive nothing short of excellence.
+Finally, joy is at the heart of everything we do. We believe that enjoying the journey is just as important as reaching the destination. Our enthusiasm and positive approach bring an element of excitement to every project we undertake.
 
-  We welcome you to explore our services, meet our consultants, and experience the ByteBurst difference. Let's innovate together and turn your ideas into reality. Get in touch with us today, and let's embark on this exciting adventure together!`;
+Whether you are an aspiring startup or an established enterprise seeking to revamp your software solutions, ByteBurst is here to accompany you on your journey to success. Our dedication to flexibility, cost-effectiveness, knowledge expansion, and our core values ensure that you receive nothing short of excellence.
+
+We welcome you to explore our services, meet our consultants, and experience the ByteBurst difference. Let's innovate together and turn your ideas into reality. Get in touch with us today, and let's embark on this exciting adventure together!
+`;
 
   // Split the complete text into two parts
   const halfway = Math.floor(completeText.length / 2);
-  const leftColumnText = completeText.slice(0, halfway).trim();
-  const rightColumnText = completeText.slice(halfway).trim();
+  const leftColumnText = completeText.slice(0, findNearestSentenceEnd(completeText, halfway)).trim();
+  const rightColumnText = completeText.slice(findNearestSentenceEnd(completeText, halfway)).trim();
 
   return (
     <Box className="App">
@@ -109,9 +143,9 @@ function App() {
                 as={Button}
                 rightIcon={<ChevronDownIcon />}
                 variant="ghost"
-                color="#7a060b"
-                _hover={{ bgColor: "red.100" }}
-                _expanded={{ bgColor: "blue.200" }}
+                color="#fbf1dd"
+                _hover={{ bgColor: "#39e4d4" }}
+                _expanded={{ bgColor: "white" }}
                 _focus={{ boxShadow: "outline" }}
                 mr={6}
               >
@@ -119,13 +153,13 @@ function App() {
               </MenuButton>
               <MenuList
                 bg="white"
-                color="blue.500"
+                color="#0c3e3e"
                 minWidth="150px"
                 boxShadow="md"
                 borderRadius="md"
               >
-                <MenuItem _hover={{ bg: "blue.50" }}>OpenScan</MenuItem>
-                <MenuItem _hover={{ bg: "blue.50" }}>Halloween game</MenuItem>
+                <MenuItem _hover={{ bg: "#0c3e3e" }}>OpenScan</MenuItem>
+                <MenuItem _hover={{ bg: "#0c3e3e" }}>Halloween game</MenuItem>
               </MenuList>
             </Menu>
             {/* Our Consultants Menu */}
@@ -134,13 +168,13 @@ function App() {
                 as={Button}
                 rightIcon={<ChevronDownIcon />}
                 variant="ghost"
-                color="#7a060b"
-                _hover={{ bgColor: "red.100" }}
-                _expanded={{ bgColor: "blue.200" }}
+                color="#fbf1dd"
+                _hover={{ bgColor: "#39e4d4" }}
+                _expanded={{ bgColor: "white" }}
                 _focus={{ boxShadow: "outline" }}
                 mr={6}
               >
-                Sebastian
+                Consultans
               </MenuButton>
             </Menu>
           </Box>
@@ -158,8 +192,8 @@ function App() {
         left="0"
         right="0"
         p="4"
-        bg="#7a0606"
-        color="white"
+        bg="#0c3e3e"
+        color="#fbf1dd"
       >
         <ButtonGroup>
           <Button
@@ -169,19 +203,19 @@ function App() {
             rel="noopener noreferrer"
             leftIcon={<FaLinkedin />}
             variant="ghost"
-            color="#d39b22"
+            color="#fbf1dd"
           />
           {/* Phone Icon - Card */}
           <Button
             leftIcon={<FaPhone />}
             variant="ghost"
-            color="#d39b22"
+            color="#fbf1dd"
             onClick={handlePhoneIconClick}
           />
           <Button
             leftIcon={<FaEnvelope />}
             variant="ghost"
-            color="#d39b22"
+            color="#fbf1dd"
           />
           <Button
             as="a"
@@ -190,7 +224,7 @@ function App() {
             rel="noopener noreferrer"
             leftIcon={<FiGithub />}
             variant="ghost"
-            color="#d39b22"
+            color="#fbf1dd"
           />
         </ButtonGroup>
       </Box>
@@ -207,10 +241,10 @@ function App() {
       )}
       {/* Title and Text Columns */}
       <Box
-        bg="white"
-        p={2}
-        mt={6}
-        mx={12}
+        className="content-container"
+        bg="#fbf1dd"
+        p={10}
+        mx={0} /* Set horizontal margin to 0 */
         mb={60}
         display="flex"
         flexDirection="column"
@@ -219,31 +253,25 @@ function App() {
         <Heading as="h2" size="2xl" mb={8}>
           Our Vision
         </Heading>
-        <Box
-          display="flex"
-          flexDirection="row"
-          justifyContent="center"
-          alignItems="flex-start"
-          columnGap={20}
-        >
-          <Box flex="1">
+        <Box className="column-content">
+          <Box className="left-column">
             <Box fontSize="25px" fontWeight="bold" textAlign="center" mb={4}>
               {/* Use the custom AnimatedText component with the desired animation */}
               <AnimatedText text="Our Mission: Flexibility, Cost Effectiveness, and Knowledge Expansion" animation="animate__lightSpeedInRight" />
             </Box>
-            <Box fontSize="16px" textAlign="justify" className="animate__animated animate__bounceInUp">
+            <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp">
               {/* Separate Box component for the first section */}
               <Box mb={4}>
                 {leftColumnText}
               </Box>
             </Box>
           </Box>
-          <Box flex="1" marginBottom="4"> {/* Add marginBottom */}
+          <Box className="right-column" marginBottom="4"> {/* Add marginBottom */}
             <Box fontSize="25px" fontWeight="bold" textAlign="center" mb={4}>
               {/* Use the custom AnimatedText component with the desired animation */}
               <AnimatedText text="Our Services: Expertise and Support at Your Fingertips" animation="animate__lightSpeedInRight" />
             </Box>
-            <Box fontSize="16px" textAlign="justify" className="animate__animated animate__bounceInUp">
+            <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp">
               {/* Separate Box component for the second section */}
               <Box mb={4}>
                 {rightColumnText}
@@ -257,20 +285,9 @@ function App() {
           justifyContent="center"
           alignItems="flex-start"
           columnGap={20}
-          mt={4}
+          mt={10}
         >
-          <Box flex="1" marginBottom="4"> {/* Add marginBottom */}
-            <Box fontSize="25px" fontWeight="bold" textAlign="center" mb={4}>
-              {/* Use the custom AnimatedText component with the desired animation */}
-              <AnimatedText text="Our Core Values: Willingness to Learn, Patience, and Joy" animation="animate__lightSpeedInRight" />
-            </Box>
-          </Box>
-          <Box flex="1">
-            <Box fontSize="25px" fontWeight="bold" textAlign="center" mb={4}>
-              {/* Use the custom AnimatedText component with the desired animation */}
-              <AnimatedText text="Join Us on Your Journey to Success" animation="animate__lightSpeedInRight" />
-            </Box>
-          </Box>
+          {/* ... Additional content if needed ... */}
         </Box>
       </Box>
     </Box>
