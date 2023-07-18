@@ -69,18 +69,6 @@ function findNearestSentenceEnd(text, index) {
 
 function App() {
   const [showCard, setShowCard] = useState(false);
-  const [scrollBackground, setScrollBackground] = useState(false);
-
-  const handleScroll = () => {
-    setScrollBackground(window.scrollY > 0);
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   const handlePhoneIconClick = () => {
     setShowCard(true);
@@ -117,187 +105,193 @@ Whether you are an aspiring startup or an established enterprise seeking to reva
 We welcome you to explore our services, meet our consultants, and experience the ByteBurst difference. Let's innovate together and turn your ideas into reality. Get in touch with us today, and let's embark on this exciting adventure together!
 `;
 
-  // Split the complete text into two parts
-  const halfway = Math.floor(completeText.length / 2);
-  const leftColumnText = completeText.slice(0, findNearestSentenceEnd(completeText, halfway)).trim();
-  const rightColumnText = completeText.slice(findNearestSentenceEnd(completeText, halfway)).trim();
+ 
+ // Split the complete text into two parts
+ 
+ const halfway = Math.floor(completeText.length / 2);
+ const leftColumnText = completeText.slice(0, findNearestSentenceEnd(completeText, halfway)).trim();
+ const rightColumnText = completeText.slice(findNearestSentenceEnd(completeText, halfway)).trim();
 
-  return (
-    <Box className="App">
-      <Box className="header">
-        <Box className="logo-container">
-          <Image src={logo} alt="Logo" className="logo-image" />
-        </Box>
-        <Box className="byteburst-container">
-          <p className="byteburst-text animate__animated animate__backInRight">
-            <strong>ByteBurst</strong>
-          </p>
-        </Box>
-      </Box>
-      <Box className="board-container">
-        <Box className="board blue-board">
-          <Box className="menu-container">
-            {/* Our Projects Menu */}
-            <Menu>
-              <MenuButton
-                as={Button}
-                rightIcon={<ChevronDownIcon />}
-                variant="ghost"
-                color="#fbf1dd"
-                _hover={{ bgColor: "#39e4d4" }}
-                _expanded={{ bgColor: "white" }}
-                _focus={{ boxShadow: "outline" }}
-                mr={6}
-              >
-                Our Projects
-              </MenuButton>
-              <MenuList
-                bg="white"
-                color="#0c3e3e"
-                minWidth="150px"
-                boxShadow="md"
-                borderRadius="md"
-              >
-                <MenuItem _hover={{ bg: "#0c3e3e" }}>OpenScan</MenuItem>
-                <MenuItem _hover={{ bg: "#0c3e3e" }}>Halloween game</MenuItem>
-              </MenuList>
-            </Menu>
-            {/* Our Consultants Menu */}
-            <Menu>
-              <MenuButton
-                as={Button}
-                rightIcon={<ChevronDownIcon />}
-                variant="ghost"
-                color="#fbf1dd"
-                _hover={{ bgColor: "#39e4d4" }}
-                _expanded={{ bgColor: "white" }}
-                _focus={{ boxShadow: "outline" }}
-                mr={6}
-              >
-                Consultans
-              </MenuButton>
-            </Menu>
-          </Box>
-        </Box>
-        <Box className="board dark-green-board">
-          <Box className="green-board-text">
-            Fueling tech excellence, one code at a time
-          </Box>
-        </Box>
-      </Box>
-      <Box
-        className="footer"
-        pos="fixed"
-        bottom="0"
-        left="0"
-        right="0"
-        p="4"
-        bg="#0c3e3e"
-        color="#fbf1dd"
-      >
-        <ButtonGroup>
-          <Button
-            as="a"
-            href="https://www.linkedin.com/company/byteburst/?viewAsMember=true"
-            target="_blank"
-            rel="noopener noreferrer"
-            leftIcon={<FaLinkedin />}
-            variant="ghost"
-            color="#fbf1dd"
-          />
-          {/* Phone Icon - Card */}
-          <Button
-            leftIcon={<FaPhone />}
-            variant="ghost"
-            color="#fbf1dd"
-            onClick={handlePhoneIconClick}
-          />
-          <Button
-            leftIcon={<FaEnvelope />}
-            variant="ghost"
-            color="#fbf1dd"
-          />
-          <Button
-            as="a"
-            href="https://github.com/sebbeflebbe"
-            target="_blank"
-            rel="noopener noreferrer"
-            leftIcon={<FiGithub />}
-            variant="ghost"
-            color="#fbf1dd"
-          />
-        </ButtonGroup>
-      </Box>
-      {/* Card */}
-      {showCard && (
-        <Card maxW="md" mx="auto" mt={2} p={2}>
-          <CardHeader>Sebastian Andersson</CardHeader>
-          <CardBody>
-            <Image src="./self-portrait.jpg" />
-            070-0393 805
-          </CardBody>
-          <Button onClick={handleCloseCard}>Close</Button>
-        </Card>
-      )}
-      {/* Title and Text Columns */}
-      <Box
-        className="content-container"
-        bg="#fbf1dd"
-        p={10}
-        mx={0} /* Set horizontal margin to 0 */
-        mb={60}
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-      >
-        <Heading as="h2" size="2xl" mb={8}>
-          Our Vision
-        </Heading>
-        <Box className="column-content">
-          <Box className="left-column">
-            <Box fontSize="25px" fontWeight="bold" textAlign="center" mb={4}>
-              {/* Use the custom AnimatedText component with the desired animation */}
-              <AnimatedText text="Our Mission: Flexibility, Cost Effectiveness, and Knowledge Expansion" animation="animate__lightSpeedInRight" />
-            </Box>
-            <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp">
-              {/* Separate Box component for the first section */}
-              <Box mb={4}>
-                {leftColumnText}
-              </Box>
-            </Box>
-          </Box>
-          <Box className="right-column" marginBottom="4"> {/* Add marginBottom */}
-            <Box fontSize="25px" fontWeight="bold" textAlign="center" mb={4}>
-              {/* Use the custom AnimatedText component with the desired animation */}
-              <AnimatedText text="Our Services: Expertise and Support at Your Fingertips" animation="animate__lightSpeedInRight" />
-            </Box>
-            <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp">
-              {/* Separate Box component for the second section */}
-              <Box mb={4}>
-                {rightColumnText}
-              </Box>
-            </Box>
-          </Box>
-        </Box>
-        <Box
-          display="flex"
-          flexDirection="row"
-          justifyContent="center"
-          alignItems="flex-start"
-          columnGap={20}
-          mt={10}
-        >
-          {/* ... Additional content if needed ... */}
-        </Box>
-      </Box>
-    </Box>
-  );
+ return (
+   <Box className="App" bg="#Ffbf1dd"> {/* Set the background color to #Ffbf1dd */}
+     <Box className="header">
+       <Box className="logo-container">
+         <Image src={logo} alt="Logo" className="logo-image" />
+       </Box>
+       <Box className="byteburst-container">
+         <p className="byteburst-text animate__animated animate__backInRight">
+           <strong>ByteBurst</strong>
+         </p>
+       </Box>
+     </Box>
+     <Box className="board-container">
+       <Box className="board blue-board">
+         <Box className="menu-container">
+           {/* Our Projects Menu */}
+           <Menu>
+             <MenuButton
+               as={Button}
+               rightIcon={<ChevronDownIcon />}
+               variant="ghost"
+               color="#fbf1dd"
+               _hover={{ bgColor: "#39e4d4" }}
+               _expanded={{ bgColor: "#Ffbf1dd" }}
+               _focus={{ boxShadow: "outline" }}
+               mr={6}
+             >
+               Our Projects
+             </MenuButton>
+             <MenuList
+               bg="white"
+               color="#0c3e3e"
+               minWidth="150px"
+               boxShadow="md"
+               borderRadius="md"
+             >
+               <MenuItem _hover={{ bg: "#0c3e3e" }}>OpenScan</MenuItem>
+               <MenuItem _hover={{ bg: "#0c3e3e" }}>Halloween game</MenuItem>
+             </MenuList>
+           </Menu>
+           {/* Our Consultants Menu */}
+           <Menu>
+             <MenuButton
+               as={Button}
+               rightIcon={<ChevronDownIcon />}
+               variant="ghost"
+               color="#fbf1dd"
+               _hover={{ bgColor: "#39e4d4" }}
+               _expanded={{ bgColor: "#Ffbf1dd" }}
+               _focus={{ boxShadow: "outline" }}
+               mr={6}
+             >
+               Consultans
+             </MenuButton>
+           </Menu>
+         </Box>
+       </Box>
+       <Box className="board dark-green-board">
+         <Box className="green-board-text">
+           Fueling tech excellence, one code at a time
+         </Box>
+       </Box>
+     </Box>
+     <Box
+       className="footer"
+       pos="fixed"
+       bottom="0"
+       left="0"
+       right="0"
+       p="4"
+       bg="#0c3e3e"
+       color="#fbf1dd"
+     >
+       <ButtonGroup>
+         <Button
+           as="a"
+           href="https://www.linkedin.com/company/byteburst/?viewAsMember=true"
+           target="_blank"
+           rel="noopener noreferrer"
+           leftIcon={<FaLinkedin />}
+           variant="ghost"
+           color="#fbf1dd"
+         />
+         {/* Phone Icon - Card */}
+         <Button
+           leftIcon={<FaPhone />}
+           variant="ghost"
+           color="#fbf1dd"
+           onClick={handlePhoneIconClick}
+         />
+         <Button
+           leftIcon={<FaEnvelope />}
+           variant="ghost"
+           color="#fbf1dd"
+         />
+         <Button
+           as="a"
+           href="https://github.com/sebbeflebbe"
+           target="_blank"
+           rel="noopener noreferrer"
+           leftIcon={<FiGithub />}
+           variant="ghost"
+           color="#fbf1dd"
+         />
+       </ButtonGroup>
+     </Box>
+
+     {/* Add a Box component to wrap the section you want to have the yellowish background */}
+     <Box bg="#Fbf1dd" pt={10} pb={60}>
+       {/* Card */}
+       {showCard && (
+         <Card maxW="md" mx="auto" mt={2} p={2}>
+           <CardHeader>Sebastian Andersson</CardHeader>
+           <CardBody>
+             <Image src="./self-portrait.jpg" />
+             070-0393 805
+           </CardBody>
+           <Button onClick={handleCloseCard}>Close</Button>
+         </Card>
+       )}
+
+       {/* Title and Text Columns */}
+       <Box
+         className="content-container"
+         p={10}
+         mx={0} /* Set horizontal margin to 0 */
+         mb={60}
+         display="flex"
+         flexDirection="column"
+         alignItems="center"
+       >
+         <Heading as="h2" size="2xl" mb={8}>
+           Our Vision
+         </Heading>
+         <Box className="column-content">
+           <Box className="left-column">
+             <Box fontSize="25px" fontWeight="bold" textAlign="center" mb={4}>
+               {/* Use the custom AnimatedText component with the desired animation */}
+               <AnimatedText text="Our Mission: Flexibility, Cost Effectiveness, and Knowledge Expansion" animation="animate__lightSpeedInRight" />
+             </Box>
+             <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp">
+               {/* Separate Box component for the first section */}
+               <Box mb={4}>
+                 {leftColumnText}
+               </Box>
+             </Box>
+           </Box>
+           <Box className="right-column" marginBottom="4"> {/* Add marginBottom */}
+             <Box fontSize="25px" fontWeight="bold" textAlign="center" mb={4}>
+               {/* Use the custom AnimatedText component with the desired animation */}
+               <AnimatedText text="Our Services: Expertise and Support at Your Fingertips" animation="animate__lightSpeedInRight" />
+             </Box>
+             <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp">
+               {/* Separate Box component for the second section */}
+               <Box mb={4}>
+                 {rightColumnText}
+               </Box>
+             </Box>
+           </Box>
+         </Box>
+         <Box
+           display="flex"
+           flexDirection="row"
+           justifyContent="center"
+           alignItems="flex-start"
+           columnGap={20}
+           mt={10}
+         >
+           {/* ... Additional content if needed ... */}
+         </Box>
+       </Box>
+     </Box>
+   </Box>
+ );
 }
 
 export default function ThemedApp() {
-  return (
-    <ChakraProvider theme={theme}>
-      <App />
-    </ChakraProvider>
-  );
+ return (
+   <ChakraProvider theme={theme}>
+     <App />
+   </ChakraProvider>
+ );
 }
