@@ -4,10 +4,6 @@ import 'animate.css';
 import {
   Box,
   Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
   Image,
   extendTheme,
   ChakraProvider,
@@ -17,7 +13,6 @@ import {
   DrawerCloseButton,
   DrawerHeader,
   DrawerBody,
-  DrawerFooter,
   Heading,
   VStack,
   Tab,
@@ -49,6 +44,13 @@ const theme = extendTheme({
 
 // Custom Drawer component
 function MenuDrawer({ isOpen, onClose }) {
+  const scrollToSection = (sectionId) => {
+    const sectionElement = document.getElementById(sectionId);
+    if (sectionElement) {
+      sectionElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
       <DrawerOverlay />
@@ -57,13 +59,25 @@ function MenuDrawer({ isOpen, onClose }) {
         <DrawerHeader>Menu</DrawerHeader>
         <DrawerBody>
           <VStack spacing={4}>
-            <Button colorScheme="teal" variant="ghost">
+            <Button
+              colorScheme="teal"
+              variant="ghost"
+              onClick={() => scrollToSection("vision-section")}
+            >
               Vision
             </Button>
-            <Button colorScheme="teal" variant="ghost">
+            <Button
+              colorScheme="teal"
+              variant="ghost"
+              onClick={() => scrollToSection("projects-section")}
+            >
               Projects
             </Button>
-            <Button colorScheme="teal" variant="ghost">
+            <Button
+              colorScheme="teal"
+              variant="ghost"
+              onClick={() => scrollToSection("consultants-section")}
+            >
               Consultants
             </Button>
           </VStack>
@@ -125,6 +139,13 @@ function App() {
 
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue); // Add handleTabChange function
+  };
+
+  const scrollToSection = (sectionId) => {
+    const sectionElement = document.getElementById(sectionId);
+    if (sectionElement) {
+      sectionElement.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   // The complete text to be split into two columns
@@ -195,9 +216,8 @@ function App() {
       >
         <FooterContent />
       </Box>
-      {/* Add a Box component to wrap the section you want to have the yellowish background */}
       <Box bg="#Fbf1dd" pt={100} pb={60}>
-        {/* Title and Text Columns */}
+        {/* Vision Section */}
         <Box
           className="content-container"
           p={10}
@@ -206,6 +226,7 @@ function App() {
           display="flex"
           flexDirection="column"
           alignItems="center"
+          id="vision-section" // Add an id to the Vision Section
         >
           <Heading as="h2" size="2xl" mb={8} color="#E9841D"> {/* Set color to #E9841D */}
             Our Vision
@@ -261,6 +282,7 @@ function App() {
           display="flex"
           flexDirection="column"
           alignItems="center"
+          id="projects-section" // Add an id to the Projects Section
         >
           <Heading as="h2" size="2xl" mb={8} color="#E9841D"> {/* Set color to #E9841D */}
             Projects
@@ -270,6 +292,7 @@ function App() {
               <TabList>
                 <Tab>OpenScan</Tab>
                 <Tab>Halloween-game</Tab>
+                <Tab>Thesis</Tab>
               </TabList>
               {/* ... (previous TabPanels and Tab content) */}
             </Tabs>
@@ -285,6 +308,7 @@ function App() {
           display="flex"
           flexDirection="column"
           alignItems="center"
+          id="consultants-section" // Add an id to the Consultants Section
         >
           <Heading as="h2" size="2xl" mb={8} color="#E9841D"> {/* Set color to #E9841D */}
             Consultants
