@@ -196,21 +196,7 @@ function App() {
         <FooterContent />
       </Box>
       {/* Add a Box component to wrap the section you want to have the yellowish background */}
-      <Box bg="#Fbf1dd" pt={10} pb={60}>
-        {/* Card */}
-        {showCard && (
-          <Box maxW="md" mx="auto" mt={2} p={2} bg="white">
-            <Image src="./self-portrait.jpg" />
-            <Box textAlign="center" fontSize="xl">
-              Sebastian Andersson
-            </Box>
-            <Box textAlign="center">070-0393 805</Box>
-            <Button mt={2} onClick={handleCloseCard}>
-              Close
-            </Button>
-          </Box>
-        )}
-
+      <Box bg="#Fbf1dd" pt={100} pb={60}>
         {/* Title and Text Columns */}
         <Box
           className="content-container"
@@ -221,7 +207,7 @@ function App() {
           flexDirection="column"
           alignItems="center"
         >
-          <Heading as="h2" size="2xl" mb={8}>
+          <Heading as="h2" size="2xl" mb={8} color="#E9841D"> {/* Set color to #E9841D */}
             Our Vision
           </Heading>
           <Box className="column-content">
@@ -265,6 +251,67 @@ function App() {
             </Tabs>
           </Box>
         </Box>
+
+        {/* Projects Section */}
+        <Box
+          className="content-container"
+          p={10}
+          mx={0}
+          mb={60}
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+        >
+          <Heading as="h2" size="2xl" mb={8} color="#E9841D"> {/* Set color to #E9841D */}
+            Projects
+          </Heading>
+          <Box className="column-content">
+            <Tabs value={tabValue} onChange={handleTabChange} colorScheme="teal">
+              <TabList>
+                <Tab>OpenScan</Tab>
+                <Tab>Halloween-game</Tab>
+              </TabList>
+              {/* ... (previous TabPanels and Tab content) */}
+            </Tabs>
+          </Box>
+        </Box>
+
+        {/* Consultants Section */}
+        <Box
+          className="content-container"
+          p={10}
+          mx={0}
+          mb={60}
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+        >
+          <Heading as="h2" size="2xl" mb={8} color="#E9841D"> {/* Set color to #E9841D */}
+            Consultants
+          </Heading>
+          <Box className="column-content">
+            <Tabs value={tabValue} onChange={handleTabChange} colorScheme="teal">
+              <TabList>
+                <Tab>Sebastian</Tab>
+              </TabList>
+              <TabPanels>
+                <TabPanel>
+                  <Box fontSize="25px" fontWeight="bold" textAlign="center" mb={4}>
+                    <AnimatedText
+                      text="Sebastian Andersson: Junior Developer"
+                      animation="animate__lightSpeedInRight"
+                    />
+                  </Box>
+                  <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp">
+                    <Box mb={4}>
+                      {/* Content for the Sebastian tab */}
+                    </Box>
+                  </Box>
+                </TabPanel>
+              </TabPanels>
+            </Tabs>
+          </Box>
+        </Box>
       </Box>
       <MenuDrawer isOpen={isDrawerOpen} onClose={handleDrawerClose} />
     </Box>
@@ -274,10 +321,12 @@ function App() {
 function FooterContent() {
   return (
     <Box display="flex" alignItems="center" justifyContent="center">
-      <FaLinkedin style={{ marginRight: '8px' }} />
-      <FaPhone style={{ marginRight: '8px' }} />
-      <FaEnvelope style={{ marginRight: '8px' }} />
-      <FiGithub />
+      <a href="https://www.linkedin.com/in/sebastianmikaelandersson/" target="_blank" rel="noopener noreferrer">
+        <FaLinkedin style={{ marginRight: '15px', fontSize: "150%" }} />
+      </a>
+      <FaPhone style={{ marginRight: '15px', fontSize: "150%" }} />
+      <FaEnvelope style={{ marginRight: '15px', fontSize: "150%" }} />
+      <FiGithub style={{ marginRight: '15px', fontSize: "150%" }} />
     </Box>
   );
 }
