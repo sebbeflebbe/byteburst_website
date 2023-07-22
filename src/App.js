@@ -20,11 +20,14 @@ import {
   TabList,
   TabPanel,
   TabPanels,
+  Flex,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { FaLinkedin, FaPhone, FaEnvelope } from "react-icons/fa";
 import { FiGithub } from "react-icons/fi";
 import logo from './byteburstlogo.remade.png';
+import openscanImage from './OpenScanNew.jpg';
+
 
 // Customizing the default theme
 const theme = extendTheme({
@@ -51,7 +54,7 @@ function MenuDrawer({ isOpen, onClose }) {
   };
 
   return (
-    <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
+    <Drawer isOpen={isOpen} placement="left" onClose={onClose} returnFocusOnClose={false}>
       <DrawerOverlay />
       <DrawerContent>
         <DrawerCloseButton />
@@ -222,7 +225,7 @@ function App() {
               </TabList>
               <TabPanels>
                 <TabPanel>
-                  <Box fontSize="25px" fontWeight="bold" textAlign="center" mb={4}>
+                  <Box fontSize="25px" fontWeight="bold" textAlign="center" mb={4} ml={80}>
                     {/* Use the custom AnimatedText component with the desired animation */}
                     <AnimatedText
                       text="Our Mission: Flexibility, Cost Effectiveness, and Knowledge Expansion"
@@ -231,13 +234,13 @@ function App() {
                   </Box>
                   <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp">
                     {/* Separate Box component for the first section */}
-                    <Box mb={4}>
+                    <Box mb={4} ml={80}>
                       {leftColumnText}
                     </Box>
                   </Box>
                 </TabPanel>
                 <TabPanel>
-                  <Box fontSize="25px" fontWeight="bold" textAlign="center" mb={4}>
+                  <Box fontSize="25px" fontWeight="bold" textAlign="center" mb={4} mr={80}>
                     {/* Use the custom AnimatedText component with the desired animation */}
                     <AnimatedText
                       text="Our Services: Expertise and Support at Your Fingertips"
@@ -246,7 +249,7 @@ function App() {
                   </Box>
                   <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp">
                     {/* Separate Box component for the second section */}
-                    <Box mb={4}>
+                    <Box mb={4} mr={80}>
                       {rightColumnText}
                     </Box>
                   </Box>
@@ -277,7 +280,42 @@ function App() {
                 <Tab>Halloween-game</Tab>
                 <Tab>Thesis</Tab>
               </TabList>
-              {/* ... (previous TabPanels and Tab content) */}
+              <TabPanels>
+                <TabPanel>
+  <Flex flexDirection="row" justify="flex-start">
+    <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp" mr={70}>
+      <Box>
+        Introducing OpenScan: Your CLI Sidekick for Easy Vulnerability Scanning!
+        <br></br>
+        Hey developers, meet OpenScan! It's the ultimate CLI solution for swift vulnerability scanning. No fuss, no hassle – just fire up your command line, and OpenScan does the rest!
+        With OpenScan, you'll effortlessly scan your projects for vulnerabilities at lightning speed. We've made it user-friendly for pros and newbies alike. Stay secure without slowing down!
+        OpenScan plays nice with various platforms and languages. It's the perfect balance of effectiveness and ease.
+        Get OpenScan, and let's make vulnerability scanning a breeze. Say goodbye to worries, and scan like a pro! 🚀🔒
+      </Box>
+    </Box>
+    <Image src={openscanImage} alt="OpenScan Image" width="20%" height="20%" mr={20} />
+  </Flex>
+</TabPanel>
+This script will create a Flex container with row direction. Inside this container, there will be the text content and the image. The justify="space-between" property will ensure that there's space between the text and the image.
+
+Make sure to import the Flex component from Chakra UI at the top of your file. You'll also need to import the image file at the top of your file.
+
+Please replace './OpenScanNew.jpg' with the correct path to your image file.
+
+
+
+
+
+
+
+                <TabPanel>
+                  <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp">
+                    <Box mb={4}>
+                      {/* Content for the Thesis tab */}
+                    </Box>
+                  </Box>
+                </TabPanel>
+              </TabPanels>
             </Tabs>
           </Box>
         </Box>
