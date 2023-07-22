@@ -25,7 +25,6 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 import { FaLinkedin, FaPhone, FaEnvelope } from "react-icons/fa";
 import { FiGithub } from "react-icons/fi";
 import logo from './byteburstlogo.remade.png';
-import scribbleAnimation from "./scribble-animation.json";
 
 // Customizing the default theme
 const theme = extendTheme({
@@ -117,17 +116,8 @@ function AnimatedText({ text, animation }) {
 }
 
 function App() {
-  const [showCard, setShowCard] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [tabValue, setTabValue] = useState(0); // Add tabValue state
-
-  const handlePhoneIconClick = () => {
-    setShowCard(true);
-  };
-
-  const handleCloseCard = () => {
-    setShowCard(false);
-  };
 
   const handleDrawerOpen = () => {
     setIsDrawerOpen(true);
@@ -139,13 +129,6 @@ function App() {
 
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue); // Add handleTabChange function
-  };
-
-  const scrollToSection = (sectionId) => {
-    const sectionElement = document.getElementById(sectionId);
-    if (sectionElement) {
-      sectionElement.scrollIntoView({ behavior: 'smooth' });
-    }
   };
 
   // The complete text to be split into two columns
