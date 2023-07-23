@@ -225,7 +225,7 @@ function App() {
           className="content-container"
           p={1}
           mx={0} /* Set horizontal margin to 0 */
-          mb={60}
+          mb={10}
           display="flex"
           flexDirection="column"
           alignItems="center"
