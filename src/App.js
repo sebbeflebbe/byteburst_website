@@ -21,6 +21,7 @@ import {
   TabPanel,
   TabPanels,
   Flex,
+  Tooltip,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { FaLinkedin, FaPhone, FaEnvelope } from "react-icons/fa";
@@ -28,11 +29,23 @@ import { FiGithub } from "react-icons/fi";
 import logo from './byteburstlogo.remade.png';
 import openscanImage from './OpenScanNew.jpg';
 import consultantProfile from './Consultant_profile.pdf';
+import thesis from './Examensarbete_slutversion.pdf';
+
+function ThesisPDF() {
+  return (
+    <Box display="flex" justifyContent="center" alignItems="center" height="100%">
+      <object data={thesis} type="application/pdf" width="200%" height="700px">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href={thesis}>Download PDF</a>.</p>
+      </object>
+    </Box>
+  );
+}
+
 
 function MyPDF() {
   return (
     <Box display="flex" justifyContent="center" alignItems="center" height="100%">
-        <object data={consultantProfile} type="application/pdf" width="100%" height="500px">
+        <object data={consultantProfile} type="application/pdf" width="200%" height="700px">
             <p>This browser does not support PDFs. Please download the PDF to view it: <a href={consultantProfile}>Download PDF</a>.</p>
         </object>
     </Box>
@@ -218,7 +231,7 @@ function App() {
           alignItems="center"
           id="vision-section" // Add an id to the Vision Section
         >
-          <Heading as="h2" size="2xl" mb={1} color="#E9841D"> {/* Set color to #E9841D */}
+          <Heading as="h2" size="2xl" mb={8} color="#E9841D"> {/* Set color to #E9841D */}
             Our Vision
           </Heading>
           <Box className="column-content">
@@ -229,25 +242,27 @@ function App() {
               </TabList>
               <TabPanels>
                 <TabPanel>
-                  <Flex flexDirection="row" justify="space-between">
-                  <iframe src="https://giphy.com/embed/XewOYJL5Ym564knnM0" width="180" height="180" frameBorder="0" allowFullScreen></iframe>
-                    <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp" mr={4}>
-                      <Box mb={4} ml={60}>
+                  <Flex flexDirection="row" justifyContent="center">
+                    <Box mr={4}>
+                      <iframe src="https://giphy.com/embed/tPjlmJzj9Z99vwF5dV" width="220" height="220" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                    </Box>
+                    <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp" ml={4}>
+                      <Box mb={4}>
                         {leftColumnText}
                       </Box>
                     </Box>
                   </Flex>
                 </TabPanel>
                 <TabPanel>
-  <Flex flexDirection="row" justify="space-between">
-    <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp" mr={4}>
-      <Box mb={4} mr={78}>
-        {rightColumnText}
-      </Box>
-    </Box>
-    <iframe src="https://giphy.com/embed/3ov9jQiFcWPPxICjFm" width="250" height="250" frameBorder="0" allowFullScreen></iframe>
-  </Flex>
-</TabPanel>
+                  <Flex flexDirection="row" justify="space-between">
+                    <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp" mr={4}>
+                      <Box mb={4} mr={78}>
+                        {rightColumnText}
+                      </Box>
+                    </Box>
+                    <iframe src="https://giphy.com/embed/3ov9jQiFcWPPxICjFm" width="250" height="250" frameBorder="0" allowFullScreen></iframe>
+                  </Flex>
+                </TabPanel>
               </TabPanels>
             </Tabs>
           </Box>
@@ -291,9 +306,29 @@ function App() {
                   </Flex>
                 </TabPanel>
                 <TabPanel>
+  <Flex flexDirection="row" justify="flex-start">
+    <Box mr={4}>
+      <iframe src="https://giphy.com/embed/POnSvcVCocE5E30x3y" width="200" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    </Box>
+    <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp" ml={4}>
+      <Box mb={4}>
+        Get ready for a spooktacular adventure this Halloween, brought to you by ByteBurst! 🎃👻
+        <br></br>
+        Picture this: Geocaching meets Halloween, and it's going down in the breathtaking city of Gothenburg! 🗺️🌆
+        <br></br>
+        We've cooked up a thrilling game that'll have you searching for hidden treasures around famous landmarks. It's like a real-life treasure hunt, but with a spooky twist! 🕵️‍♂️🏰
+        <br></br>
+        Get your crew together and unleash your inner explorer as you decipher clues and unearth hidden caches. Feel the excitement rise as you venture through the city's iconic spots, all while the Halloween spirit weaves its magic around you! 🧭✨
+        <br></br>
+        So, grab your costumes, bring your best puzzle-solving skills, and join us for a hauntingly good time! ByteBurst's Geocaching Halloween-game is waiting for you, and it's bound to be an unforgettable experience. Let's go on this epic quest together! 🎉👻🕵️‍♀️
+      </Box>
+    </Box>
+  </Flex>
+</TabPanel>
+                <TabPanel>
                   <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp">
                     <Box mb={4}>
-                      {/* Content for the Thesis tab */}
+                    <ThesisPDF/>
                     </Box>
                   </Box>
                 </TabPanel>
@@ -331,7 +366,7 @@ function App() {
                   </Box>
                   <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp">
                     <Box mb={4}>
-                    <MyPDF/> {/* Add this line */}
+                      <MyPDF/> {/* Add this line */}
                     </Box>
                   </Box>
                 </TabPanel>
@@ -351,12 +386,26 @@ function FooterContent() {
       <a href="https://www.linkedin.com/in/sebastianmikaelandersson/" target="_blank" rel="noopener noreferrer">
         <FaLinkedin style={{ marginRight: '15px', fontSize: "150%" }} />
       </a>
-      <FaPhone style={{ marginRight: '15px', fontSize: "150%" }} />
-      <FaEnvelope style={{ marginRight: '15px', fontSize: "150%" }} />
-      <FiGithub style={{ marginRight: '15px', fontSize: "150%" }} />
+      <Tooltip label="0700393805" fontSize="md">
+        <span> {/* Wrap the icon with a span to provide a DOM element for the tooltip to attach to */}
+          <FaPhone style={{ marginRight: '15px', fontSize: "150%" }} />
+        </span>
+      </Tooltip>
+      <Tooltip label="sebastian@byteburst.dev" fontSize="md">
+        <span> {/* Wrap the icon with a span to provide a DOM element for the tooltip to attach to */}
+          <FaEnvelope style={{ marginRight: '15px', fontSize: "150%" }} />
+        </span>
+      </Tooltip>
+      <a href="https://github.com/sebbeflebbe" target="_blank" rel="noopener noreferrer">
+        <FiGithub style={{ marginRight: '15px', fontSize: "150%" }} />
+      </a>
     </Box>
   );
 }
+
+
+
+
 
 export default function ThemedApp() {
   return (
