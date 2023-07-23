@@ -27,8 +27,17 @@ import { FaLinkedin, FaPhone, FaEnvelope } from "react-icons/fa";
 import { FiGithub } from "react-icons/fi";
 import logo from './byteburstlogo.remade.png';
 import openscanImage from './OpenScanNew.jpg';
+import consultantProfile from './Consultant_profile.pdf';
 
-
+function MyPDF() {
+  return (
+    <Box display="flex" justifyContent="center" alignItems="center" height="100%">
+        <object data={consultantProfile} type="application/pdf" width="100%" height="500px">
+            <p>This browser does not support PDFs. Please download the PDF to view it: <a href={consultantProfile}>Download PDF</a>.</p>
+        </object>
+    </Box>
+);
+}
 // Customizing the default theme
 const theme = extendTheme({
   components: {
@@ -138,8 +147,8 @@ function App() {
   const completeText = `
     Founded in 2023 by Sebastian Andersson, a junior developer with a passion for technology, ByteBurst is a software development company committed to delivering excellent results for clients. We are a young team that embraces challenges, seeks growth opportunities, and prioritizes customer satisfaction.
     Our mission is to provide flexible and cost-effective software solutions tailored to meet individual needs. We value continuous learning, take on diverse projects, and offer innovative solutions to clients.
-    Whether you're a startup or an established enterprise, our highly skilled developers are ready to assist you with technical questions and transparent communication.
-    We believe in the joy of the development journey, holding steadfast to our core values of learning and patience. Our team stays up-to-date with industry trends to deliver cutting-edge solutions.
+    Whether you're a startup or an established enterprise, our developers are ready to assist you with technical questions and transparent communication.
+    We believe in the joy of the development journey, holding steadfast to our core values of learning and patience. Our team stays up-to-date with industry trends to deliver contemporary solutions.
     At ByteBurst, we cherish patience, attention to detail, and enthusiasm in every project we undertake.
     Let us accompany you on your journey to success. Explore our services, meet our consultants, and experience the ByteBurst difference. Contact us today and embark on this exciting adventure!
   `;
@@ -201,7 +210,7 @@ function App() {
         {/* Vision Section */}
         <Box
           className="content-container"
-          p={10}
+          p={1}
           mx={0} /* Set horizontal margin to 0 */
           mb={60}
           display="flex"
@@ -209,7 +218,7 @@ function App() {
           alignItems="center"
           id="vision-section" // Add an id to the Vision Section
         >
-          <Heading as="h2" size="2xl" mb={8} color="#E9841D"> {/* Set color to #E9841D */}
+          <Heading as="h2" size="2xl" mb={1} color="#E9841D"> {/* Set color to #E9841D */}
             Our Vision
           </Heading>
           <Box className="column-content">
@@ -220,35 +229,25 @@ function App() {
               </TabList>
               <TabPanels>
                 <TabPanel>
-                  <Box fontSize="25px" fontWeight="bold" textAlign="center" mb={4} ml={80}>
-                    {/* Use the custom AnimatedText component with the desired animation */}
-                    <AnimatedText
-                      text="Our Mission: Flexibility, Cost Effectiveness, and Knowledge Expansion"
-                      animation="animate__lightSpeedInRight"
-                    />
-                  </Box>
-                  <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp">
-                    {/* Separate Box component for the first section */}
-                    <Box mb={4} ml={80}>
-                      {leftColumnText}
+                  <Flex flexDirection="row" justify="space-between">
+                  <iframe src="https://giphy.com/embed/XewOYJL5Ym564knnM0" width="180" height="180" frameBorder="0" allowFullScreen></iframe>
+                    <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp" mr={4}>
+                      <Box mb={4} ml={60}>
+                        {leftColumnText}
+                      </Box>
                     </Box>
-                  </Box>
+                  </Flex>
                 </TabPanel>
                 <TabPanel>
-                  <Box fontSize="25px" fontWeight="bold" textAlign="center" mb={4} mr={80}>
-                    {/* Use the custom AnimatedText component with the desired animation */}
-                    <AnimatedText
-                      text="Our Services: Expertise and Support at Your Fingertips"
-                      animation="animate__lightSpeedInRight"
-                    />
-                  </Box>
-                  <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp">
-                    {/* Separate Box component for the second section */}
-                    <Box mb={4} mr={80}>
-                      {rightColumnText}
-                    </Box>
-                  </Box>
-                </TabPanel>
+  <Flex flexDirection="row" justify="space-between">
+    <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp" mr={4}>
+      <Box mb={4} mr={78}>
+        {rightColumnText}
+      </Box>
+    </Box>
+    <iframe src="https://giphy.com/embed/3ov9jQiFcWPPxICjFm" width="250" height="250" frameBorder="0" allowFullScreen></iframe>
+  </Flex>
+</TabPanel>
               </TabPanels>
             </Tabs>
           </Box>
@@ -277,32 +276,20 @@ function App() {
               </TabList>
               <TabPanels>
                 <TabPanel>
-  <Flex flexDirection="row" justify="flex-start">
-    <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp" mr={70}>
-      <Box>
-        Introducing OpenScan: Your CLI Sidekick for Easy Vulnerability Scanning!
-        <br></br>
-        Hey developers, meet OpenScan! It's the ultimate CLI solution for swift vulnerability scanning. No fuss, no hassle – just fire up your command line, and OpenScan does the rest!
-        With OpenScan, you'll effortlessly scan your projects for vulnerabilities at lightning speed. We've made it user-friendly for pros and newbies alike. Stay secure without slowing down!
-        OpenScan plays nice with various platforms and languages. It's the perfect balance of effectiveness and ease.
-        Get OpenScan, and let's make vulnerability scanning a breeze. Say goodbye to worries, and scan like a pro! 🚀🔒
-      </Box>
-    </Box>
-    <Image src={openscanImage} alt="OpenScan Image" width="20%" height="20%" mr={20} />
-  </Flex>
-</TabPanel>
-This script will create a Flex container with row direction. Inside this container, there will be the text content and the image. The justify="space-between" property will ensure that there's space between the text and the image.
-
-Make sure to import the Flex component from Chakra UI at the top of your file. You'll also need to import the image file at the top of your file.
-
-Please replace './OpenScanNew.jpg' with the correct path to your image file.
-
-
-
-
-
-
-
+                  <Flex flexDirection="row" justify="flex-start">
+                    <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp" mr={70}>
+                      <Box>
+                        Introducing OpenScan: Your CLI Sidekick for Easy Vulnerability Scanning!
+                        <br></br>
+                        Hey developers, meet OpenScan! It's the ultimate CLI solution for swift vulnerability scanning. No fuss, no hassle – just fire up your command line, and OpenScan does the rest!
+                        With OpenScan, you'll effortlessly scan your projects for vulnerabilities at lightning speed. We've made it user-friendly for pros and newbies alike. Stay secure without slowing down!
+                        OpenScan plays nice with various platforms and languages. It's the perfect balance of effectiveness and ease.
+                        Get OpenScan, and let's make vulnerability scanning a breeze. Say goodbye to worries, and scan like a pro! 🚀🔒
+                      </Box>
+                    </Box>
+                    <Image src={openscanImage} alt="OpenScan Image" width="20%" height="20%" mr={20} />
+                  </Flex>
+                </TabPanel>
                 <TabPanel>
                   <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp">
                     <Box mb={4}>
@@ -344,7 +331,7 @@ Please replace './OpenScanNew.jpg' with the correct path to your image file.
                   </Box>
                   <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp">
                     <Box mb={4}>
-                      {/* Content for the Sebastian tab */}
+                    <MyPDF/> {/* Add this line */}
                     </Box>
                   </Box>
                 </TabPanel>
