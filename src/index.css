@@ -58,7 +58,20 @@ body {
   height: auto;
 }
 
+/* Responsive styles */
+@media (max-width: 768px) {
+  .byteburst-text {
+    font-size: 30px;
+  }
 
+  .logo-container {
+    width: 20%;
+  }
+
+  .green-board-text {
+    font-size: 20px;
+  }
+}
 
 /* Additional CSS for positioning */
 .App {
@@ -189,7 +202,3 @@ body {
   text-align: center;
   padding: 10px;
 }
-
-
-
-
