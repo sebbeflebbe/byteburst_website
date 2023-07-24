@@ -36,7 +36,7 @@ import thesis from './Examensarbete_slutversion.pdf';
 function ThesisPDF() {
   return (
     <Box display="flex" justifyContent="center" alignItems="center" height="100%">
-      <object data={thesis} type="application/pdf" width="200%" height="700px">
+      <object data={thesis} type="application/pdf" width="100%" height="400px">
         <p>This browser does not support PDFs. Please download the PDF to view it: <a href={thesis}>Download PDF</a>.</p>
       </object>
     </Box>
@@ -46,7 +46,7 @@ function ThesisPDF() {
 function MyPDF() {
   return (
     <Box display="flex" justifyContent="center" alignItems="center" height="100%">
-        <object data={consultantProfile} type="application/pdf" width="200%" height="700px">
+        <object data={consultantProfile} type="application/pdf" width="100%" height="400px">
             <p>This browser does not support PDFs. Please download the PDF to view it: <a href={consultantProfile}>Download PDF</a>.</p>
         </object>
     </Box>
