@@ -22,6 +22,7 @@ import {
   TabPanels,
   Flex,
   Tooltip,
+  Stack,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { FaLinkedin, FaPhone, FaEnvelope } from "react-icons/fa";
@@ -41,7 +42,6 @@ function ThesisPDF() {
   );
 }
 
-
 function MyPDF() {
   return (
     <Box display="flex" justifyContent="center" alignItems="center" height="100%">
@@ -51,7 +51,7 @@ function MyPDF() {
     </Box>
 );
 }
-// Customizing the default theme
+
 const theme = extendTheme({
   components: {
     Button: {
@@ -66,7 +66,6 @@ const theme = extendTheme({
   },
 });
 
-// Custom Drawer component
 function MenuDrawer({ isOpen, onClose }) {
   const scrollToSection = (sectionId) => {
     const sectionElement = document.getElementById(sectionId);
@@ -76,7 +75,7 @@ function MenuDrawer({ isOpen, onClose }) {
   };
 
   return (
-    <Drawer isOpen={isOpen} placement="left" onClose={onClose} returnFocusOnClose={false}>
+    <Drawer isOpen={isOpen} placement={["bottom", "left"]} onClose={onClose} returnFocusOnClose={false}>
       <DrawerOverlay />
       <DrawerContent>
         <DrawerCloseButton />
@@ -112,12 +111,10 @@ function MenuDrawer({ isOpen, onClose }) {
 }
 
 function findNearestSentenceEnd(text, index) {
-  // Regular expression to match sentence ends (. ! ?) followed by a space or the end of the text
-  const regex = /(\.|\!|\?)(\s|$)/g;
+  const regex = /(\.|\?)(\s|$)/g;
   let match;
   let lastMatchIndex = -1;
 
-  // Find the last sentence end before the index
   while ((match = regex.exec(text)) !== null) {
     if (match.index > index) {
       break;
@@ -125,24 +122,12 @@ function findNearestSentenceEnd(text, index) {
     lastMatchIndex = match.index;
   }
 
-  // Return the nearest sentence end before the index
   return lastMatchIndex >= 0 ? lastMatchIndex + match[1].length : index;
-}
-
-// Custom AnimatedText component
-function AnimatedText({ text, animation }) {
-  return (
-    <Box
-      className={`animate__animated ${animation}`} // Apply the animation class to the element
-    >
-      {text}
-    </Box>
-  );
 }
 
 function App() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [tabValue, setTabValue] = useState(0); // Add tabValue state
+  const [tabValue, setTabValue] = useState(0);
 
   const handleDrawerOpen = () => {
     setIsDrawerOpen(true);
@@ -153,10 +138,9 @@ function App() {
   };
 
   const handleTabChange = (event, newValue) => {
-    setTabValue(newValue); // Add handleTabChange function
+    setTabValue(newValue);
   };
 
-  // The complete text to be split into two columns
   const completeText = `
     Founded in 2023 by Sebastian Andersson, a junior developer with a passion for technology, ByteBurst is a software development company committed to delivering excellent results for clients. We are a young team that embraces challenges, seeks growth opportunities, and prioritizes customer satisfaction.
     Our mission is to provide flexible and cost-effective software solutions tailored to meet individual needs. We value continuous learning, take on diverse projects, and offer innovative solutions to clients.
@@ -166,7 +150,6 @@ function App() {
     Let us accompany you on your journey to success. Explore our services, meet our consultants, and experience the ByteBurst difference. Contact us today and embark on this exciting adventure!
   `;
 
-  // Split the complete text into two parts
   const halfway = Math.floor(completeText.length / 2);
   const leftColumnText = completeText.slice(0, findNearestSentenceEnd(completeText, halfway)).trim();
   const rightColumnText = completeText.slice(findNearestSentenceEnd(completeText, halfway)).trim();
@@ -186,7 +169,6 @@ function App() {
       <Box className="board-container">
         <Box className="board blue-board">
           <Box className="menu-container">
-            {/* Replace the previous menu buttons with the Chakra Drawer button */}
             <Button
               rightIcon={<ChevronDownIcon />}
               variant="ghost"
@@ -220,18 +202,17 @@ function App() {
         <FooterContent />
       </Box>
       <Box bg="#Fbf1dd" pt={100} pb={60}>
-        {/* Vision Section */}
         <Box
           className="content-container"
-          p={1}
-          mx={0} /* Set horizontal margin to 0 */
+          p={[2, 10]}
+          mx={0}
           mb={10}
           display="flex"
           flexDirection="column"
           alignItems="center"
-          id="vision-section" // Add an id to the Vision Section
+          id="vision-section"
         >
-          <Heading as="h2" size="2xl" mb={8} color="#E9841D"> {/* Set color to #E9841D */}
+          <Heading as="h2" size={["lg", "2xl"]} mb={8} color="#E9841D">
             Our Vision
           </Heading>
           <Box className="column-content">
@@ -242,44 +223,43 @@ function App() {
               </TabList>
               <TabPanels>
                 <TabPanel>
-                  <Flex flexDirection="row" justifyContent="center">
+                  <Stack direction={["column", "row"]} justify="center">
                     <Box mr={4}>
-                      <iframe src="https://giphy.com/embed/tPjlmJzj9Z99vwF5dV" width="220" height="220" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                      <iframe title="Unique Title 1" src="https://giphy.com/embed/tPjlmJzj9Z99vwF5dV" width="220" height="220" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
                     </Box>
                     <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp" ml={4}>
                       <Box mb={4}>
                         {leftColumnText}
                       </Box>
                     </Box>
-                  </Flex>
+                  </Stack>
                 </TabPanel>
                 <TabPanel>
-                  <Flex flexDirection="row" justify="space-between">
+                  <Stack direction={["column", "row"]} justify="space-between">
                     <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp" mr={4}>
                       <Box mb={4} mr={78}>
                         {rightColumnText}
                       </Box>
                     </Box>
-                    <iframe src="https://giphy.com/embed/3ov9jQiFcWPPxICjFm" width="250" height="250" frameBorder="0" allowFullScreen></iframe>
-                  </Flex>
+                    <iframe title="Unique Title 2" src="https://giphy.com/embed/3ov9jQiFcWPPxICjFm" width="250" height="250" frameBorder="0" allowFullScreen></iframe>
+                  </Stack>
                 </TabPanel>
               </TabPanels>
             </Tabs>
           </Box>
         </Box>
 
-        {/* Projects Section */}
         <Box
           className="content-container"
-          p={10}
+          p={[2, 10]}
           mx={0}
           mb={60}
           display="flex"
           flexDirection="column"
           alignItems="center"
-          id="projects-section" // Add an id to the Projects Section
+          id="projects-section"
         >
-          <Heading as="h2" size="2xl" mb={8} color="#E9841D"> {/* Set color to #E9841D */}
+          <Heading as="h2" size={["lg", "2xl"]} mb={8} color="#E9841D">
             Projects
           </Heading>
           <Box className="column-content">
@@ -291,7 +271,7 @@ function App() {
               </TabList>
               <TabPanels>
                 <TabPanel>
-                  <Flex flexDirection="row" justify="flex-start">
+                  <Stack direction={["column", "row"]} justify="flex-start">
                     <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp" mr={70}>
                       <Box>
                         Introducing OpenScan: Your CLI Sidekick for Easy Vulnerability Scanning!
@@ -302,29 +282,29 @@ function App() {
                         Get OpenScan, and let's make vulnerability scanning a breeze. Say goodbye to worries, and scan like a pro! 🚀🔒
                       </Box>
                     </Box>
-                    <Image src={openscanImage} alt="OpenScan Image" width="20%" height="20%" mr={20} />
-                  </Flex>
+                    <Image src={openscanImage} alt="OpenScan Image" width={["100%", "20%"]} height={["100%", "20%"]} mr={20} />
+                  </Stack>
                 </TabPanel>
                 <TabPanel>
-  <Flex flexDirection="row" justify="flex-start">
-    <Box mr={4}>
-      <iframe src="https://giphy.com/embed/POnSvcVCocE5E30x3y" width="200" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-    </Box>
-    <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp" ml={4}>
-      <Box mb={4}>
-        Get ready for a spooktacular adventure this Halloween, brought to you by ByteBurst! 🎃👻
-        <br></br>
-        Picture this: Geocaching meets Halloween, and it's going down in the breathtaking city of Gothenburg! 🗺️🌆
-        <br></br>
-        We've cooked up a thrilling game that'll have you searching for hidden treasures around famous landmarks. It's like a real-life treasure hunt, but with a spooky twist! 🕵️‍♂️🏰
-        <br></br>
-        Get your crew together and unleash your inner explorer as you decipher clues and unearth hidden caches. Feel the excitement rise as you venture through the city's iconic spots, all while the Halloween spirit weaves its magic around you! 🧭✨
-        <br></br>
-        So, grab your costumes, bring your best puzzle-solving skills, and join us for a hauntingly good time! ByteBurst's Geocaching Halloween-game is waiting for you, and it's bound to be an unforgettable experience. Let's go on this epic quest together! 🎉👻🕵️‍♀️
-      </Box>
-    </Box>
-  </Flex>
-</TabPanel>
+                  <Stack direction={["column", "row"]} justify="flex-start">
+                    <Box mr={4}>
+                      <iframe title="Unique Title 3" src="https://giphy.com/embed/POnSvcVCocE5E30x3y" width="200" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                    </Box>
+                    <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp" ml={4}>
+                      <Box mb={4}>
+                        Get ready for a spooktacular adventure this Halloween, brought to you by ByteBurst! 🎃👻
+                        <br></br>
+                        Picture this: Geocaching meets Halloween, and it's going down in the breathtaking city of Gothenburg! 🗺️🌆
+                        <br></br>
+                        We've cooked up a thrilling game that'll have you searching for hidden treasures around famous landmarks. It's like a real-life treasure hunt, but with a spooky twist! 🕵️‍♂️🏰
+                        <br></br>
+                        Get your crew together and unleash your inner explorer as you decipher clues and unearth hidden caches. Feel the excitement rise as you venture through the city's iconic spots, all while the Halloween spirit weaves its magic around you! 🧭✨
+                        <br></br>
+                        So, grab your costumes, bring your best puzzle-solving skills, and join us for a hauntingly good time! ByteBurst's Geocaching Halloween-game is waiting for you, and it's bound to be an unforgettable experience. Let's go on this epic quest together! 🎉👻🕵️‍♀️
+                      </Box>
+                    </Box>
+                  </Stack>
+                </TabPanel>
                 <TabPanel>
                   <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp">
                     <Box mb={4}>
@@ -337,36 +317,44 @@ function App() {
           </Box>
         </Box>
 
-        {/* Consultants Section */}
         <Box
           className="content-container"
-          p={10}
+          p={[2, 10]}
           mx={0}
           mb={60}
           display="flex"
           flexDirection="column"
           alignItems="center"
-          id="consultants-section" // Add an id to the Consultants Section
+          id="consultants-section"
         >
-          <Heading as="h2" size="2xl" mb={8} color="#E9841D"> {/* Set color to #E9841D */}
+          <Heading as="h2" size={["lg", "2xl"]} mb={8} color="#E9841D">
             Consultants
           </Heading>
           <Box className="column-content">
             <Tabs value={tabValue} onChange={handleTabChange} colorScheme="teal">
               <TabList>
                 <Tab>Sebastian</Tab>
+                <Tab>Consultant Profile</Tab>
               </TabList>
               <TabPanels>
                 <TabPanel>
-                  <Box fontSize="25px" fontWeight="bold" textAlign="center" mb={4}>
-                    <AnimatedText
-                      text="Sebastian Andersson: Junior Developer"
-                      animation="animate__lightSpeedInRight"
-                    />
-                  </Box>
+                  <Stack direction={["column", "row"]} justify="flex-start">
+                    <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp" mr={70}>
+                      <Box>
+                        Hi, I'm Sebastian, the founder of ByteBurst! I'm a junior developer with a passion for technology and a knack for problem-solving. I love taking on challenges and turning them into opportunities for growth.
+                        <br></br>
+                        I believe in the power of continuous learning and staying updated with industry trends. I'm committed to delivering excellent results and ensuring customer satisfaction.
+                        <br></br>
+                        When I'm not coding, you can find me exploring new places or immersed in a good book. Let's connect and create something amazing together!
+                      </Box>
+                    </Box>
+                    <iframe title="Unique Title 4" src="https://giphy.com/embed/3o7TKSjRrfIPjeiVyM" width="200" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                  </Stack>
+                </TabPanel>
+                <TabPanel>
                   <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp">
                     <Box mb={4}>
-                      <MyPDF/> {/* Add this line */}
+                      <MyPDF/>
                     </Box>
                   </Box>
                 </TabPanel>
@@ -375,6 +363,7 @@ function App() {
           </Box>
         </Box>
       </Box>
+
       <MenuDrawer isOpen={isDrawerOpen} onClose={handleDrawerClose} />
     </Box>
   );
@@ -382,32 +371,64 @@ function App() {
 
 function FooterContent() {
   return (
-    <Box display="flex" alignItems="center" justifyContent="center">
-      <a href="https://www.linkedin.com/in/sebastianmikaelandersson/" target="_blank" rel="noopener noreferrer">
-        <FaLinkedin style={{ marginRight: '15px', fontSize: "150%" }} />
-      </a>
-      <Tooltip label="0700393805" fontSize="md">
-        <span> {/* Wrap the icon with a span to provide a DOM element for the tooltip to attach to */}
-          <FaPhone style={{ marginRight: '15px', fontSize: "150%" }} />
-        </span>
-      </Tooltip>
-      <Tooltip label="sebastian@byteburst.dev" fontSize="md">
-        <span> {/* Wrap the icon with a span to provide a DOM element for the tooltip to attach to */}
-          <FaEnvelope style={{ marginRight: '15px', fontSize: "150%" }} />
-        </span>
-      </Tooltip>
-      <a href="https://github.com/sebbeflebbe" target="_blank" rel="noopener noreferrer">
-        <FiGithub style={{ marginRight: '15px', fontSize: "150%" }} />
-      </a>
-    </Box>
+    <Flex justify="space-between" align="center">
+      <Box>
+        <Tooltip label="Call us" fontSize="md">
+          <Button
+            as="a"
+            href="tel:+46700393805"
+            variant="ghost"
+            colorScheme="teal"
+            leftIcon={<FaPhone />}
+          >
+            +46700393805
+          </Button>
+        </Tooltip>
+      </Box>
+      <Box>
+        <Tooltip label="Email us" fontSize="md">
+          <Button
+            as="a"
+            href="mailto:sebastian@byteburst.se"
+            variant="ghost"
+            colorScheme="teal"
+            leftIcon={<FaEnvelope />}
+          >
+            sebastian@byteburst.se
+          </Button>
+        </Tooltip>
+      </Box>
+      <Box>
+        <Tooltip label="LinkedIn" fontSize="md">
+          <Button
+            as="a"
+            href="https://www.linkedin.com/company/byteburst"
+            variant="ghost"
+            colorScheme="teal"
+            leftIcon={<FaLinkedin />}
+          >
+            LinkedIn
+          </Button>
+        </Tooltip>
+      </Box>
+      <Box>
+        <Tooltip label="GitHub" fontSize="md">
+          <Button
+            as="a"
+            href="https://github.com/sebbeflebbe"
+            variant="ghost"
+            colorScheme="teal"
+            leftIcon={<FiGithub />}
+          >
+            GitHub
+          </Button>
+        </Tooltip>
+      </Box>
+    </Flex>
   );
 }
 
-
-
-
-
-export default function ThemedApp() {
+export default function Main() {
   return (
     <ChakraProvider theme={theme}>
       <App />
