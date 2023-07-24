@@ -15,6 +15,7 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  margin-bottom: 0px; /* adjust as needed */
 }
 
 .board {
@@ -23,6 +24,7 @@ body {
   align-items: center;
   height: 60px;
   width: 100%;
+  gap: 0px; /* adjust as needed */
 }
 
 .blue-board {
@@ -202,3 +204,20 @@ body {
   text-align: center;
   padding: 10px;
 }
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: #0c3e3e;
+  color: #fbf1dd;
+}
+
+@media (min-width: 768px) {
+  .footer {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+}
+
