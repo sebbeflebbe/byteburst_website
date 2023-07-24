@@ -111,7 +111,7 @@ function MenuDrawer({ isOpen, onClose }) {
 }
 
 function findNearestSentenceEnd(text, index) {
-  const regex = /(\.|\!|\?)(\s|$)/g;
+  const regex = /(\.|\?)(\s|$)/g;
   let match;
   let lastMatchIndex = -1;
 
@@ -123,16 +123,6 @@ function findNearestSentenceEnd(text, index) {
   }
 
   return lastMatchIndex >= 0 ? lastMatchIndex + match[1].length : index;
-}
-
-function AnimatedText({ text, animation }) {
-  return (
-    <Box
-      className={`animate__animated ${animation}`}
-    >
-      {text}
-    </Box>
-  );
 }
 
 function App() {
@@ -235,7 +225,7 @@ function App() {
                 <TabPanel>
                   <Stack direction={["column", "row"]} justify="center">
                     <Box mr={4}>
-                      <iframe src="https://giphy.com/embed/tPjlmJzj9Z99vwF5dV" width="220" height="220" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                      <iframe title="Unique Title 1" src="https://giphy.com/embed/tPjlmJzj9Z99vwF5dV" width="220" height="220" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
                     </Box>
                     <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp" ml={4}>
                       <Box mb={4}>
@@ -251,7 +241,7 @@ function App() {
                         {rightColumnText}
                       </Box>
                     </Box>
-                    <iframe src="https://giphy.com/embed/3ov9jQiFcWPPxICjFm" width="250" height="250" frameBorder="0" allowFullScreen></iframe>
+                    <iframe title="Unique Title 2" src="https://giphy.com/embed/3ov9jQiFcWPPxICjFm" width="250" height="250" frameBorder="0" allowFullScreen></iframe>
                   </Stack>
                 </TabPanel>
               </TabPanels>
@@ -298,7 +288,7 @@ function App() {
                 <TabPanel>
                   <Stack direction={["column", "row"]} justify="flex-start">
                     <Box mr={4}>
-                      <iframe src="https://giphy.com/embed/POnSvcVCocE5E30x3y" width="200" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                      <iframe title="Unique Title 3" src="https://giphy.com/embed/POnSvcVCocE5E30x3y" width="200" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
                     </Box>
                     <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp" ml={4}>
                       <Box mb={4}>
@@ -358,7 +348,7 @@ function App() {
                         When I'm not coding, you can find me exploring new places or immersed in a good book. Let's connect and create something amazing together!
                       </Box>
                     </Box>
-                    <iframe src="https://giphy.com/embed/3o7TKSjRrfIPjeiVyM" width="200" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                    <iframe title="Unique Title 4" src="https://giphy.com/embed/3o7TKSjRrfIPjeiVyM" width="200" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
                   </Stack>
                 </TabPanel>
                 <TabPanel>
@@ -386,12 +376,12 @@ function FooterContent() {
         <Tooltip label="Call us" fontSize="md">
           <Button
             as="a"
-            href="tel:+46700000000"
+            href="tel:+46700393805"
             variant="ghost"
             colorScheme="teal"
             leftIcon={<FaPhone />}
           >
-            +46 70 000 00 00
+            +46700393805
           </Button>
         </Tooltip>
       </Box>
@@ -399,12 +389,12 @@ function FooterContent() {
         <Tooltip label="Email us" fontSize="md">
           <Button
             as="a"
-            href="mailto:info@byteburst.se"
+            href="mailto:sebastian@byteburst.se"
             variant="ghost"
             colorScheme="teal"
             leftIcon={<FaEnvelope />}
           >
-            info@byteburst.se
+            sebastian@byteburst.se
           </Button>
         </Tooltip>
       </Box>
@@ -425,7 +415,7 @@ function FooterContent() {
         <Tooltip label="GitHub" fontSize="md">
           <Button
             as="a"
-            href="https://github.com/byteburst"
+            href="https://github.com/sebbeflebbe"
             variant="ghost"
             colorScheme="teal"
             leftIcon={<FiGithub />}
