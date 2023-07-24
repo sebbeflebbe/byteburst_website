@@ -377,7 +377,7 @@ function FooterContent() {
   return (
     <Flex direction={["column", "row"]} justify="center" align="center" wrap="wrap">
       <Box m={2}>
-        <Tooltip label="Call us" fontSize={["14px", "18px"]}>
+        <Tooltip label="Call us" fontSize={["8px", "18px"]}>
           <Button
             leftIcon={<FaPhone />}
             colorScheme="teal"
@@ -389,7 +389,7 @@ function FooterContent() {
         </Tooltip>
       </Box>
       <Box m={2}>
-        <Tooltip label="Email us" fontSize={["14px", "18px"]}>
+        <Tooltip label="Email us" fontSize={["8px", "18px"]}>
           <Button
             leftIcon={<FaEnvelope />}
             colorScheme="teal"
@@ -401,7 +401,7 @@ function FooterContent() {
         </Tooltip>
       </Box>
       <Box m={2}>
-        <Tooltip label="Visit our LinkedIn" fontSize={["14px", "18px"]}>
+        <Tooltip label="Visit our LinkedIn" fontSize={["8px", "18px"]}>
           <Button
             leftIcon={<FaLinkedin />}
             colorScheme="teal"
@@ -413,7 +413,7 @@ function FooterContent() {
         </Tooltip>
       </Box>
       <Box m={2}>
-        <Tooltip label="Visit our GitHub" fontSize={["14px", "18px"]}>
+        <Tooltip label="Visit our GitHub" fontSize={["8px", "18px"]}>
           <Button
             leftIcon={<FiGithub />}
             colorScheme="teal"
