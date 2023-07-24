@@ -184,7 +184,7 @@ function App() {
           </p>
         </Box>
       </Box>
-      <Box className="board-container">
+      <Box className="board-container" display="flex" flexDirection="column" alignItems="center" justifyContent="flex-start">
         <Box className="board blue-board">
           <Box className="menu-container">
             <Button

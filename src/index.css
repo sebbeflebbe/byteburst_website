@@ -16,6 +16,8 @@ body {
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 0px; /* adjust as needed */
+  min-height: 0; /* This ensures that the container can shrink as needed */
+  flex-grow: 1; /* This allows the container to grow as needed */
 }
 
 .board {
