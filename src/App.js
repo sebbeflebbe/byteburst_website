@@ -361,8 +361,8 @@ function App() {
 
 function FooterContent() {
   return (
-    <Flex justify="space-between" align="center">
-      <Box>
+    <Flex direction={["column", "row"]} justify="center" align="center" wrap="wrap">
+      <Box m={2}>
         <Tooltip label="Call us" fontSize="md">
           <Button
             leftIcon={<FaPhone />}
@@ -374,7 +374,7 @@ function FooterContent() {
           </Button>
         </Tooltip>
       </Box>
-      <Box>
+      <Box m={2}>
         <Tooltip label="Email us" fontSize="md">
           <Button
             leftIcon={<FaEnvelope />}
@@ -386,7 +386,7 @@ function FooterContent() {
           </Button>
         </Tooltip>
       </Box>
-      <Box>
+      <Box m={2}>
         <Tooltip label="Visit our LinkedIn" fontSize="md">
           <Button
             leftIcon={<FaLinkedin />}
@@ -398,13 +398,13 @@ function FooterContent() {
           </Button>
         </Tooltip>
       </Box>
-      <Box>
+      <Box m={2}>
         <Tooltip label="Visit our GitHub" fontSize="md">
           <Button
             leftIcon={<FiGithub />}
             colorScheme="teal"
             variant="ghost"
-            onClick={() => window.open("https://github.com/byteburst")}
+            onClick={() => window.open("https://github.com/sebbeflebbe")}
           >
             GitHub
           </Button>
@@ -413,6 +413,7 @@ function FooterContent() {
     </Flex>
   );
 }
+
 
 export default function Main() {
   return (

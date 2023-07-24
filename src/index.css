@@ -207,7 +207,7 @@ body {
 .footer {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   padding: 10px;
   background-color: #0c3e3e;
