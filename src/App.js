@@ -23,6 +23,7 @@ import {
   Flex,
   Tooltip,
   Stack,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { FaLinkedin, FaPhone, FaEnvelope } from "react-icons/fa";
@@ -154,10 +155,13 @@ function App() {
   const leftColumnText = completeText.slice(0, findNearestSentenceEnd(completeText, halfway)).trim();
   const rightColumnText = completeText.slice(findNearestSentenceEnd(completeText, halfway)).trim();
 
+  // Use Chakra UI's useBreakpointValue hook to adjust font sizes based on the current breakpoint
+  const fontSize = useBreakpointValue({ base: "sm", md: "md", lg: "lg" });
+
   return (
     <Box className="App" bg="#Ffbf1dd">
       <Box className="header">
-        <Box className="logo-container">
+        <Box className="logo-container" w={["50%", "30%", "20%", "10%"]}>
           <Image src={logo} alt="Logo" className="logo-image" />
         </Box>
         <Box className="byteburst-container">
@@ -212,7 +216,7 @@ function App() {
           alignItems="center"
           id="vision-section"
         >
-          <Heading as="h2" size={["lg", "2xl"]} mb={8} color="#E9841D">
+          <Heading as="h2" size={fontSize} mb={8} color="#E9841D">
             Our Vision
           </Heading>
           <Box className="column-content">
@@ -259,7 +263,7 @@ function App() {
           alignItems="center"
           id="projects-section"
         >
-          <Heading as="h2" size={["lg", "2xl"]} mb={8} color="#E9841D">
+          <Heading as="h2" size={fontSize} mb={8} color="#E9841D">
             Projects
           </Heading>
           <Box className="column-content">
@@ -327,43 +331,29 @@ function App() {
           alignItems="center"
           id="consultants-section"
         >
-          <Heading as="h2" size={["lg", "2xl"]} mb={8} color="#E9841D">
+          <Heading as="h2" size={fontSize} mb={8} color="#E9841D">
             Consultants
           </Heading>
           <Box className="column-content">
             <Tabs value={tabValue} onChange={handleTabChange} colorScheme="teal">
               <TabList>
-                <Tab>Sebastian</Tab>
-                <Tab>Consultant Profile</Tab>
+                <Tab>Sebastian Andersson</Tab>
               </TabList>
               <TabPanels>
                 <TabPanel>
                   <Stack direction={["column", "row"]} justify="flex-start">
                     <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp" mr={70}>
                       <Box>
-                        Hi, I'm Sebastian, the founder of ByteBurst! I'm a junior developer with a passion for technology and a knack for problem-solving. I love taking on challenges and turning them into opportunities for growth.
-                        <br></br>
-                        I believe in the power of continuous learning and staying updated with industry trends. I'm committed to delivering excellent results and ensuring customer satisfaction.
-                        <br></br>
-                        When I'm not coding, you can find me exploring new places or immersed in a good book. Let's connect and create something amazing together!
+                        <MyPDF/>
                       </Box>
                     </Box>
-                    <iframe title="Unique Title 4" src="https://giphy.com/embed/3o7TKSjRrfIPjeiVyM" width="200" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
                   </Stack>
-                </TabPanel>
-                <TabPanel>
-                  <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp">
-                    <Box mb={4}>
-                      <MyPDF/>
-                    </Box>
-                  </Box>
                 </TabPanel>
               </TabPanels>
             </Tabs>
           </Box>
         </Box>
       </Box>
-
       <MenuDrawer isOpen={isDrawerOpen} onClose={handleDrawerClose} />
     </Box>
   );
@@ -375,50 +365,46 @@ function FooterContent() {
       <Box>
         <Tooltip label="Call us" fontSize="md">
           <Button
-            as="a"
-            href="tel:+46700393805"
-            variant="ghost"
-            colorScheme="teal"
             leftIcon={<FaPhone />}
+            colorScheme="teal"
+            variant="ghost"
+            onClick={() => window.open("tel:+46700393805")}
           >
-            +46700393805
+            +46 70 039 38 05
           </Button>
         </Tooltip>
       </Box>
       <Box>
         <Tooltip label="Email us" fontSize="md">
           <Button
-            as="a"
-            href="mailto:sebastian@byteburst.se"
-            variant="ghost"
-            colorScheme="teal"
             leftIcon={<FaEnvelope />}
+            colorScheme="teal"
+            variant="ghost"
+            onClick={() => window.open("mailto:Sebastian@byteburst.se")}
           >
             sebastian@byteburst.se
           </Button>
         </Tooltip>
       </Box>
       <Box>
-        <Tooltip label="LinkedIn" fontSize="md">
+        <Tooltip label="Visit our LinkedIn" fontSize="md">
           <Button
-            as="a"
-            href="https://www.linkedin.com/company/byteburst"
-            variant="ghost"
-            colorScheme="teal"
             leftIcon={<FaLinkedin />}
+            colorScheme="teal"
+            variant="ghost"
+            onClick={() => window.open("https://www.linkedin.com/company/byteburst/")}
           >
             LinkedIn
           </Button>
         </Tooltip>
       </Box>
       <Box>
-        <Tooltip label="GitHub" fontSize="md">
+        <Tooltip label="Visit our GitHub" fontSize="md">
           <Button
-            as="a"
-            href="https://github.com/sebbeflebbe"
-            variant="ghost"
-            colorScheme="teal"
             leftIcon={<FiGithub />}
+            colorScheme="teal"
+            variant="ghost"
+            onClick={() => window.open("https://github.com/byteburst")}
           >
             GitHub
           </Button>
