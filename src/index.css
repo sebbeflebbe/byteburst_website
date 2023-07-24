@@ -230,12 +230,24 @@ body {
   padding: 10px;
   background-color: #0c3e3e;
   color: #fbf1dd;
+  font-size: 14px; /* default font size for mobile */
+}
+
+.footer svg { /* assuming your icons are SVGs */
+  width: 24px; /* default icon size for mobile */
+  height: 24px;
 }
 
 @media (min-width: 768px) {
   .footer {
     flex-direction: row;
     justify-content: space-evenly;
+    font-size: 18px; /* larger font size for desktop */
+  }
+
+  .footer svg {
+    width: 32px; /* larger icon size for desktop */
+    height: 32px;
   }
 }
 
