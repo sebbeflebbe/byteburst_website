@@ -203,10 +203,25 @@ body {
 .green-board-text {
   font-family: 'Bebas Neue', cursive;
   color: #0c3e3e;
-  font-size: 26px;
+  font-size: 26px; /* This will be the default font size for larger screens */
   text-align: center;
   padding: 10px;
 }
+
+/* When the viewport is 768px or less, decrease the font size */
+@media (max-width: 768px) {
+  .green-board-text {
+    font-size: 20px; /* Adjust as needed */
+  }
+}
+
+/* When the viewport is 480px or less, decrease the font size even more */
+@media (max-width: 480px) {
+  .green-board-text {
+    font-size: 16px; /* Adjust as needed */
+  }
+}
+
 .footer {
   display: flex;
   flex-direction: column;
