@@ -316,19 +316,15 @@ function App() {
                         <br></br>
                         We've cooked up a thrilling game that'll have you searching for hidden treasures around famous landmarks. It's like a real-life treasure hunt, but with a spooky twist! 🕵️‍♂️🏰
                         <br></br>
-                        Get your crew together and unleash your inner explorer as you decipher clues and unearth hidden caches. Feel the excitement rise as you venture through the city's iconic spots, all while the Halloween spirit weaves its magic around you! 🧭✨
+                        Get your crew together and unleash your inner explorer as you decipher clues and unearth hidden caches. Feel the excitement rise as you venture through the city's iconic spots, all while the Halloween spirit is in full swing! 🌙🦇
                         <br></br>
-                        So, grab your costumes, bring your best puzzle-solving skills, and join us for a hauntingly good time! ByteBurst's Geocaching Halloween-game is waiting for you, and it's bound to be an unforgettable experience. Let's go on this epic quest together! 🎉👻🕵️‍♀️
+                        So, are you ready for a Halloween adventure like no other? Join us, and let's make this Halloween unforgettable! 🎉🎊
                       </Box>
                     </Box>
                   </Stack>
                 </TabPanel>
                 <TabPanel>
-                  <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp">
-                    <Box mb={4}>
-                    <ThesisPDF/>
-                    </Box>
-                  </Box>
+                  <ThesisPDF />
                 </TabPanel>
               </TabPanels>
             </Tabs>
@@ -351,17 +347,11 @@ function App() {
           <Box className="column-content">
             <Tabs value={tabValue} onChange={handleTabChange} colorScheme="teal">
               <TabList>
-                <Tab>Sebastian Andersson</Tab>
+                <Tab>Consultant Profile</Tab>
               </TabList>
               <TabPanels>
                 <TabPanel>
-                  <Stack direction={["column", "row"]} justify="flex-start">
-                    <Box fontSize="18px" textAlign="justify" className="animate__animated animate__bounceInUp" mr={70}>
-                      <Box>
-                        <MyPDF/>
-                      </Box>
-                    </Box>
-                  </Stack>
+                  <MyPDF />
                 </TabPanel>
               </TabPanels>
             </Tabs>
@@ -375,59 +365,73 @@ function App() {
 
 function FooterContent() {
   return (
-    <Flex direction={["column", "row"]} justify="center" align="center" wrap="wrap">
-      <Box m={2}>
+    <Flex justify="space-between" align="center">
+      <Box>
         <Tooltip label="Call us" fontSize="md">
           <Button
-            leftIcon={<FaPhone />}
-            colorScheme="teal"
+            as="a"
+            href="tel:+4670-0393805"
             variant="ghost"
-            onClick={() => window.open("tel:+46700393805")}
+            color="#fbf1dd"
+            _hover={{ bgColor: "#39e4d4" }}
+            _expanded={{ bgColor: "#Ffbf1dd" }}
+            _focus={{ boxShadow: "outline" }}
+            mr={6}
+            leftIcon={<FaPhone />}
           >
-            +46 70 039 38 05
+            +4670-0393805
           </Button>
         </Tooltip>
-      </Box>
-      <Box m={2}>
         <Tooltip label="Email us" fontSize="md">
           <Button
-            leftIcon={<FaEnvelope />}
-            colorScheme="teal"
+            as="a"
+            href="mailto:sebastian@byteburst.se"
             variant="ghost"
-            onClick={() => window.open("mailto:Sebastian@byteburst.se")}
+            color="#fbf1dd"
+            _hover={{ bgColor: "#39e4d4" }}
+            _expanded={{ bgColor: "#Ffbf1dd" }}
+            _focus={{ boxShadow: "outline" }}
+            mr={6}
+            leftIcon={<FaEnvelope />}
           >
             sebastian@byteburst.se
           </Button>
         </Tooltip>
       </Box>
-      <Box m={2}>
-        <Tooltip label="Visit our LinkedIn" fontSize="md">
+      <Box>
+        <Tooltip label="LinkedIn" fontSize="md">
           <Button
-            leftIcon={<FaLinkedin />}
-            colorScheme="teal"
+            as="a"
+            href="https://www.linkedin.com/company/byteburst/?viewAsMember=true"
             variant="ghost"
-            onClick={() => window.open("https://www.linkedin.com/company/byteburst/")}
+            color="#fbf1dd"
+            _hover={{ bgColor: "#39e4d4" }}
+            _expanded={{ bgColor: "#Ffbf1dd" }}
+            _focus={{ boxShadow: "outline" }}
+            mr={6}
+            leftIcon={<FaLinkedin />}
           >
             LinkedIn
           </Button>
         </Tooltip>
-      </Box>
-      <Box m={2}>
-        <Tooltip label="Visit our GitHub" fontSize="md">
+        <Tooltip label="Github" fontSize="md">
           <Button
-            leftIcon={<FiGithub />}
-            colorScheme="teal"
+            as="a"
+            href="https://github.com/sebbeflebbe"
             variant="ghost"
-            onClick={() => window.open("https://github.com/sebbeflebbe")}
+            color="#fbf1dd"
+            _hover={{ bgColor: "#39e4d4" }}
+            _expanded={{ bgColor: "#Ffbf1dd" }}
+            _focus={{ boxShadow: "outline" }}
+            leftIcon={<FiGithub />}
           >
-            GitHub
+            Github
           </Button>
         </Tooltip>
       </Box>
     </Flex>
   );
 }
-
 
 export default function Main() {
   return (
