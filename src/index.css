@@ -25,6 +25,7 @@ body {
   height: calc(var(--vh, 1vh) * 7); /* Use the --vh custom property here */
   width: 100%;
   gap: 0px; /* adjust as needed */
+  flex-shrink: 0; /* add this line */
 }
 
 .blue-board {
