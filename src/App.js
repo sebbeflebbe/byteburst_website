@@ -33,6 +33,20 @@ import openscanImage from './OpenScanNew.jpg';
 import consultantProfile from './Consultant_profile.pdf';
 import thesis from './Examensarbete_slutversion.pdf';
 
+// Run this function when the document is loaded
+document.addEventListener('DOMContentLoaded', setVhProperty);
+
+// Run this function when the window is resized
+window.addEventListener('resize', setVhProperty);
+
+function setVhProperty() {
+  // Get the height of the window's inner viewport, then divide by 100 to get the value of 1vh
+  let vh = window.innerHeight * 0.01;
+
+  // Set the value in the --vh custom property to the root of the document
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
 function ThesisPDF() {
   return (
     <Box display="flex" justifyContent="center" alignItems="center" height="100%">
